@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bc6v5wf11gcii"]
+
+[ext_resource type="Script" uid="uid://cnrif50nlebeu" path="res://Scripts/nave_final.gd" id="1_a62nl"]
+[ext_resource type="Texture2D" uid="uid://cbbgkj7phgtg3" path="res://Imagens/nave_02-Sheet.png" id="2_wnncu"]
+[ext_resource type="AudioStream" uid="uid://b5qbu8rvq4xp2" path="res://Sounds/rocketsound.mp3" id="3_wnncu"]
+[ext_resource type="AudioStream" uid="uid://6ccvosv0yeq0" path="res://Sounds/liecio-mysterious-drone-pad-in-perfect-loop-257593.mp3" id="4_h3cqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckb4l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3cqw"]
+atlas = ExtResource("2_wnncu")
+region = Rect2(0, 0, 83, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi62a"]
+atlas = ExtResource("2_wnncu")
+region = Rect2(332, 0, 83, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s87k6"]
+atlas = ExtResource("2_wnncu")
+region = Rect2(249, 0, 83, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6glus"]
+atlas = ExtResource("2_wnncu")
+region = Rect2(166, 0, 83, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtlne"]
+atlas = ExtResource("2_wnncu")
+region = Rect2(83, 0, 83, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gptwd"]
+atlas = ExtResource("2_wnncu")
+region = Rect2(0, 0, 83, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0i88t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3cqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi62a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s87k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6glus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtlne")
+}],
+"loop": 1,
+"name": &"decolar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gptwd")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="NaveFinal" type="Area2D" unique_id=1742987923]
+script = ExtResource("1_a62nl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1366654393]
+shape = SubResource("RectangleShape2D_ckb4l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=981441141]
+scale = Vector2(0.43999878, 0.43999878)
+sprite_frames = SubResource("SpriteFrames_0i88t")
+animation = &"decolar"
+frame_progress = 0.8189128
+
+[node name="SomFoguete" type="AudioStreamPlayer" parent="." unique_id=382830092]
+stream = ExtResource("3_wnncu")
+
+[node name="FinalMusica" type="AudioStreamPlayer" parent="." unique_id=1860255249]
+stream = ExtResource("4_h3cqw")
+volume_db = 3.649
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

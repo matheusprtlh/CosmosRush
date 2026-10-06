@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dat8ds8qtmj1b"]
+
+[ext_resource type="Script" uid="uid://d03c3l4h2yuwt" path="res://Scripts/menu.gd" id="1_8aipq"]
+[ext_resource type="FontFile" uid="uid://b2ttgoylkfhoe" path="res://Fontes/mario_kart_ds/Mario-Kart-DS.ttf" id="4_fapvr"]
+[ext_resource type="Script" uid="uid://bn54a81lhaav" path="res://Scripts/button.gd" id="6_kdsmm"]
+[ext_resource type="Script" uid="uid://b1tiburpgqii1" path="res://Scripts/button_2.gd" id="7_8lfl8"]
+[ext_resource type="Shader" uid="uid://c4ikfakp4efjp" path="res://Shaders/menu.gdshader" id="8_plcv4"]
+[ext_resource type="AudioStream" uid="uid://bl557wj15qg3l" path="res://Sounds/sons_sem_atraso/clicksound.wav" id="12_bpp88"]
+[ext_resource type="FontFile" uid="uid://cl0xaakrrtx6" path="res://Fontes/daydream_3/Daydream DEMO.otf" id="12_ctkf8"]
+[ext_resource type="AudioStream" uid="uid://rewnckpg617s" path="res://Sounds/spacesound.mp3" id="13_ctkf8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lfl8"]
+shader = ExtResource("8_plcv4")
+shader_parameter/background_top = Color(0.004, 0.008, 0.035, 1)
+shader_parameter/background_bottom = Color(0.015, 0.025, 0.075, 1)
+shader_parameter/star_color = Color(0.9, 0.95, 1, 1)
+shader_parameter/star_brightness = 1.4
+shader_parameter/shooting_star_brightness = 2.0
+
+[node name="menu" type="Control" unique_id=373844878]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8aipq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=147964550]
+material = SubResource("ShaderMaterial_8lfl8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=57243243]
+layout_mode = 0
+offset_top = 126.0
+offset_right = 1151.0
+offset_bottom = 514.0
+color = Color(0, 0, 0, 0.83137256)
+
+[node name="SomClick" type="AudioStreamPlayer" parent="." unique_id=578713387]
+stream = ExtResource("12_bpp88")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2076229937]
+stream = ExtResource("13_ctkf8")
+autoplay = true
+parameters/looping = true
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=780346500]
+texture_filter = 1
+layout_mode = 0
+offset_left = 217.00002
+offset_top = 154.00002
+offset_right = 335.51508
+offset_bottom = 167.99976
+scale = Vector2(5.999239, 5.999239)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_fapvr")
+bbcode_enabled = true
+text = "COSMOS RUSH"
+scroll_active = false
+
+[node name="Play" type="RichTextLabel" parent="." unique_id=712618969]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 277.0
+offset_right = 582.0209
+offset_bottom = 303.0
+scale = Vector2(1.92, 1.92)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("12_ctkf8")
+bbcode_enabled = true
+text = "play"
+scroll_active = false
+
+[node name="Button" type="Button" parent="Play" unique_id=109050122]
+layout_mode = 0
+offset_left = -2.6041794
+offset_top = 2.6041672
+offset_right = 57.291664
+offset_bottom = 26.041668
+flat = true
+script = ExtResource("6_kdsmm")
+
+[node name="Quit" type="RichTextLabel" parent="." unique_id=1592281070]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 338.99997
+offset_right = 583.36084
+offset_bottom = 364.99997
+scale = Vector2(1.8359616, 1.8359616)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("12_ctkf8")
+bbcode_enabled = true
+text = "quit"
+scroll_active = false
+
+[node name="Button2" type="Button" parent="Quit" unique_id=32588752]
+layout_mode = 0
+offset_left = -1.6340256
+offset_top = 2.7233963
+offset_right = 66.99488
+offset_bottom = 25.599678
+flat = true
+script = ExtResource("7_8lfl8")
+
+[node name="Title2" type="RichTextLabel" parent="." unique_id=2017440629]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 413.0
+offset_top = 605.0
+offset_right = 670.0326
+offset_bottom = 648.67224
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3592391, 1.3592391)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_fapvr")
+bbcode_enabled = true
+text = "[pulse]feito por matheus portilho[/pulse]"
+scroll_active = false
+
+[connection signal="pressed" from="Play/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Quit/Button2" to="." method="_on_button_2_pressed"]

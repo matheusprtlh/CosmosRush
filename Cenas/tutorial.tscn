@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://pnnce106xeq6"]
+
+[ext_resource type="Script" uid="uid://d1iror6ktxutd" path="res://Scripts/label.gd" id="1_7n6eb"]
+[ext_resource type="FontFile" uid="uid://c7ehm3ebhnofs" path="res://Fontes/dk_longreach/DK Longreach.otf" id="1_yb1ct"]
+[ext_resource type="AudioStream" uid="uid://rewnckpg617s" path="res://Sounds/spacesound.mp3" id="3_ehuit"]
+
+[node name="Tutorial" type="CanvasLayer" unique_id=1869797338]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=361320443]
+offset_right = 1164.0
+offset_bottom = 659.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1472899068]
+offset_left = 90.0
+offset_top = 114.0
+offset_right = 130.0
+offset_bottom = 137.0
+scale = Vector2(3.080001, 3.080001)
+theme_override_fonts/font = ExtResource("1_yb1ct")
+script = ExtResource("1_7n6eb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1090444499]
+stream = ExtResource("3_ehuit")
+pitch_scale = 0.79
+autoplay = true
+parameters/looping = true

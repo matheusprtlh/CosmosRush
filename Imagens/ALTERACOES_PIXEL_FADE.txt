@@ -1,0 +1,31 @@
+COSMOS RUSH - Integração Pixel Fade
+
+Alterações realizadas:
+- color_rect.tscn configurada como transição reutilizável.
+- CanvasLayer da transição em layer 100.
+- PixelFade em Full Rect e Mouse Filter = Ignore.
+- pixel_size alterado de 24 para 4 (pixels pequenos).
+- Transição adicionada às cenas:
+  Terra 1, Terra 2, Terra 3,
+  Marte 1, Marte 2, Marte 3,
+  Lua 1, Lua 2, Lua 3 e Final.
+- Trocas de fase alteradas para usar PixelFade.
+- Fluxo: pixels entram da esquerda -> cobrem a tela -> troca a cena -> 0,5 s coberto -> pixels saem pela direita.
+- Corrigido fluxo de Marte:
+  Marte 1 -> Marte 2
+  Marte 2 -> Marte 3
+  (foi criado tpmarte_3.gd separado.)
+
+Arquivos principais alterados:
+- color_rect.tscn
+- pixel_fade.gd
+- Scripts/tpterra_2.gd
+- Scripts/tpterra_3.gd
+- Cenas/foguete.gd
+- tpmarte_2.gd
+- tpmarte_3.gd (novo)
+- tpmarte_3.tscn
+- foguetemarte.gd
+- Cenas/playerLua.gd
+- nave_final.gd
+- cenas das fases listadas acima

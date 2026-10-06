@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://wjjaet5n6oat"]
+
+[ext_resource type="Script" uid="uid://blla2o71457x7" path="res://Scripts/game_over.gd" id="1_fkf4o"]
+[ext_resource type="FontFile" uid="uid://cl0xaakrrtx6" path="res://Fontes/daydream_3/Daydream DEMO.otf" id="5_dxp6y"]
+[ext_resource type="Script" uid="uid://dljmjonhuhrxh" path="res://Scripts/retry.gd" id="5_o6hi5"]
+[ext_resource type="Script" uid="uid://jb1r2b4bd32b" path="res://Scripts/menu_cenas.gd" id="6_qmc8d"]
+[ext_resource type="FontFile" uid="uid://b2ttgoylkfhoe" path="res://Fontes/mario_kart_ds/Mario-Kart-DS.ttf" id="7_qmc8d"]
+[ext_resource type="AudioStream" uid="uid://cemhqibca71bk" path="res://Sounds/sons_sem_atraso/gameoversound.wav" id="9_dxp6y"]
+
+[node name="GameOver" type="Control" unique_id=1337512302]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fkf4o")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1379639596]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.965002
+anchor_bottom = 16.232
+offset_right = -6.6000977
+offset_bottom = -1.2800293
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=792056536]
+stream = ExtResource("9_dxp6y")
+autoplay = true
+
+[node name="Retry" type="RichTextLabel" parent="." unique_id=1434962722]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 340.0
+offset_right = 590.8472
+offset_bottom = 364.30554
+scale = Vector2(1.7087238, 1.7087238)
+theme_override_fonts/normal_font = ExtResource("5_dxp6y")
+bbcode_enabled = true
+text = "retry"
+scroll_active = false
+script = ExtResource("5_o6hi5")
+
+[node name="ButtonRetry" type="Button" parent="Retry" unique_id=1005754346]
+layout_mode = 0
+offset_left = -1.7556896
+offset_top = 0.58522415
+offset_right = 86.0291
+offset_bottom = 24.579731
+flat = true
+
+[node name="Menu" type="RichTextLabel" parent="." unique_id=1835239155]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 283.0
+offset_right = 604.8472
+offset_bottom = 307.30554
+scale = Vector2(1.7087238, 1.7087238)
+theme_override_fonts/normal_font = ExtResource("5_dxp6y")
+bbcode_enabled = true
+text = "menu"
+scroll_active = false
+script = ExtResource("6_qmc8d")
+
+[node name="ButtonMenu" type="Button" parent="Menu" unique_id=965636866]
+layout_mode = 0
+offset_left = -7.6080112
+offset_top = 1.7556992
+offset_right = 80.17678
+offset_bottom = 25.750206
+flat = true
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=258872683]
+texture_filter = 1
+layout_mode = 0
+offset_left = 165.0
+offset_top = 103.0
+offset_right = 242.34314
+offset_bottom = 116.668396
+scale = Vector2(10.8863125, 10.8863125)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_qmc8d")
+bbcode_enabled = true
+text = "game over"
+scroll_active = false
+
+[connection signal="pressed" from="Retry/ButtonRetry" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Menu/ButtonMenu" to="." method="_on_button_menu_pressed"]

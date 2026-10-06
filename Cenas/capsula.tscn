@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://gc3fvffg6ssd"]
+
+[ext_resource type="Script" uid="uid://c4nogbvkvtcyc" path="res://Scripts/capsula.gd" id="1_nx4r7"]
+[ext_resource type="Texture2D" uid="uid://b2yj3xb572gus" path="res://Imagens/Capsula.png" id="1_urfg5"]
+[ext_resource type="AudioStream" uid="uid://mro8vc60hiee" path="res://Sounds/sons_sem_atraso/oxygensoundB_ajustado.wav" id="3_4f2pp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yvqx"]
+size = Vector2(8, 20)
+
+[node name="Capsula" type="Area2D" unique_id=1665478055]
+scale = Vector2(1.6399996, 1.6399996)
+script = ExtResource("1_nx4r7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1892122930]
+scale = Vector2(0.08000016, 0.08000016)
+texture = ExtResource("1_urfg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1375193039]
+shape = SubResource("RectangleShape2D_0yvqx")
+
+[node name="SomOxigenio" type="AudioStreamPlayer" parent="." unique_id=746250644]
+stream = ExtResource("3_4f2pp")
+volume_db = -2.737

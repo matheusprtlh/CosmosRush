@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpn0tcw2ews5f"]
+
+[ext_resource type="Script" uid="uid://3gcttytvlgk4" path="res://Scripts/cristal.gd" id="1_lyudc"]
+[ext_resource type="Texture2D" uid="uid://c5yr6ox1qvgxk" path="res://Imagens/cristalverde.png" id="2_l602y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy0rg"]
+size = Vector2(20, 23)
+
+[node name="cristalVerde" type="Area2D" unique_id=833414913]
+script = ExtResource("1_lyudc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1611060090]
+texture = ExtResource("2_l602y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=631111544]
+shape = SubResource("RectangleShape2D_uy0rg")

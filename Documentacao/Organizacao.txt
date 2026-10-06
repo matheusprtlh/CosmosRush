@@ -1,0 +1,181 @@
+COSMOS RUSH — ORGANIZAÇÃO
+
+Cenas: cenas .tscn; Scripts: código .gd; Shaders: .gdshader;
+Imagens: sprites e fontes editáveis; Fundos: imagens de cenário;
+Planets: imagens de planetas; TileMaps: imagens dos mapas;
+Fontes: fontes e suas licenças; Sounds: áudios e arquivo-fonte ZIP.
+
+159 arquivos movidos (incluindo .uid e .import).
+76 arquivos atualizados; 124 referências de caminho alteradas.
+934 referências res:// verificadas, sem caminhos antigos ou arquivos faltando.
+Todos os 28 scripts e as 32 cenas foram examinados.
+UIDs preservados. Cena inicial e autoload usam caminhos explícitos.
+Scripts/menu_cenas.gd é o antigo Cenas/menu.gd; Scripts/menu.gd foi preservado.
+O backup .tmp foi preservado em Cenas/Backups, com referência ao game_over.gd existente.
+
+VALIDAÇÃO
+Conferência estática de referências, integridade dos arquivos e ausência de sobrescritas.
+Não houve execução do jogo: o Godot não está instalado neste ambiente.
+A pasta .godot (cache gerado pelo editor) não acompanha o ZIP; será recriada ao abrir.
+Extraia em uma pasta nova e importe project.godot. Aguarde a importação dos recursos.
+
+MOVIMENTAÇÕES
+Cenas/Capsula.png -> Imagens/Capsula.png
+Cenas/Capsula.png.import -> Imagens/Capsula.png.import
+Cenas/button.gd -> Scripts/button.gd
+Cenas/button.gd.uid -> Scripts/button.gd.uid
+Cenas/button_2.gd -> Scripts/button_2.gd
+Cenas/button_2.gd.uid -> Scripts/button_2.gd.uid
+Cenas/dk_longreach/DK Longreach.otf -> Fontes/dk_longreach/DK Longreach.otf
+Cenas/dk_longreach/DK Longreach.otf.import -> Fontes/dk_longreach/DK Longreach.otf.import
+Cenas/dk_longreach/Hanoded Fonts License & FAQ - DO READ THIS!.pdf -> Fontes/dk_longreach/Hanoded Fonts License & FAQ - DO READ THIS!.pdf
+Cenas/dk_longreach/Longreach Poster 1.png -> Fontes/dk_longreach/Longreach Poster 1.png
+Cenas/dk_longreach/Longreach Poster 1.png.import -> Fontes/dk_longreach/Longreach Poster 1.png.import
+Cenas/foguete.gd -> Scripts/foguete.gd
+Cenas/foguete.gd.uid -> Scripts/foguete.gd.uid
+Cenas/label_marte.gd -> Scripts/label_marte.gd
+Cenas/label_marte.gd.uid -> Scripts/label_marte.gd.uid
+Cenas/menu.gd -> Scripts/menu_cenas.gd
+Cenas/menu.gd.uid -> Scripts/menu_cenas.gd.uid
+Cenas/menu.gdshader -> Shaders/menu.gdshader
+Cenas/menu.gdshader.uid -> Shaders/menu.gdshader.uid
+Cenas/playerLua.gd -> Scripts/playerLua.gd
+Cenas/playerLua.gd.uid -> Scripts/playerLua.gd.uid
+Cenas/playerMarte.gd -> Scripts/playerMarte.gd
+Cenas/playerMarte.gd.uid -> Scripts/playerMarte.gd.uid
+Cenas/quit.gd -> Scripts/quit.gd
+Cenas/quit.gd.uid -> Scripts/quit.gd.uid
+Cenas/retry.gd -> Scripts/retry.gd
+Cenas/retry.gd.uid -> Scripts/retry.gd.uid
+Cenas/tplua.gd -> Scripts/tplua.gd
+Cenas/tplua.gd.uid -> Scripts/tplua.gd.uid
+Foguete.aseprite -> Imagens/FontesEditaveis/Foguete.aseprite
+Oxygen_bar.png -> Imagens/Oxygen_bar.png
+Oxygen_bar.png.import -> Imagens/Oxygen_bar.png.import
+Scripts/Planet_Pack_bycancer/dryhotplanet.png -> Planets/Planet_Pack_bycancer/dryhotplanet.png
+Scripts/Planet_Pack_bycancer/dryhotplanet.png.import -> Planets/Planet_Pack_bycancer/dryhotplanet.png.import
+Scripts/Planet_Pack_bycancer/dryvenuslikeplanet.png -> Planets/Planet_Pack_bycancer/dryvenuslikeplanet.png
+Scripts/Planet_Pack_bycancer/dryvenuslikeplanet.png.import -> Planets/Planet_Pack_bycancer/dryvenuslikeplanet.png.import
+Scripts/Planet_Pack_bycancer/exoplanet.png -> Planets/Planet_Pack_bycancer/exoplanet.png
+Scripts/Planet_Pack_bycancer/exoplanet.png.import -> Planets/Planet_Pack_bycancer/exoplanet.png.import
+Scripts/Planet_Pack_bycancer/iceplanet.png -> Planets/Planet_Pack_bycancer/iceplanet.png
+Scripts/Planet_Pack_bycancer/iceplanet.png.import -> Planets/Planet_Pack_bycancer/iceplanet.png.import
+Scripts/Planet_Pack_bycancer/iceplanet_2.png -> Planets/Planet_Pack_bycancer/iceplanet_2.png
+Scripts/Planet_Pack_bycancer/iceplanet_2.png.import -> Planets/Planet_Pack_bycancer/iceplanet_2.png.import
+Scripts/Planet_Pack_bycancer/lava_planet.png -> Planets/Planet_Pack_bycancer/lava_planet.png
+Scripts/Planet_Pack_bycancer/lava_planet.png.import -> Planets/Planet_Pack_bycancer/lava_planet.png.import
+Scripts/Planet_Pack_bycancer/machine_world.png -> Planets/Planet_Pack_bycancer/machine_world.png
+Scripts/Planet_Pack_bycancer/machine_world.png.import -> Planets/Planet_Pack_bycancer/machine_world.png.import
+Scripts/Planet_Pack_bycancer/moon.png -> Planets/Planet_Pack_bycancer/moon.png
+Scripts/Planet_Pack_bycancer/moon.png.import -> Planets/Planet_Pack_bycancer/moon.png.import
+Scripts/Planet_Pack_bycancer/neptunlikeplanet.png -> Planets/Planet_Pack_bycancer/neptunlikeplanet.png
+Scripts/Planet_Pack_bycancer/neptunlikeplanet.png.import -> Planets/Planet_Pack_bycancer/neptunlikeplanet.png.import
+Scripts/Planet_Pack_bycancer/original_Size/dryhotplanet32x32.png -> Planets/Planet_Pack_bycancer/original_Size/dryhotplanet32x32.png
+Scripts/Planet_Pack_bycancer/original_Size/dryhotplanet32x32.png.import -> Planets/Planet_Pack_bycancer/original_Size/dryhotplanet32x32.png.import
+Scripts/Planet_Pack_bycancer/original_Size/dryvenuslikeplane32x32t.png -> Planets/Planet_Pack_bycancer/original_Size/dryvenuslikeplane32x32t.png
+Scripts/Planet_Pack_bycancer/original_Size/dryvenuslikeplane32x32t.png.import -> Planets/Planet_Pack_bycancer/original_Size/dryvenuslikeplane32x32t.png.import
+Scripts/Planet_Pack_bycancer/original_Size/exoplanet32x32.png -> Planets/Planet_Pack_bycancer/original_Size/exoplanet32x32.png
+Scripts/Planet_Pack_bycancer/original_Size/exoplanet32x32.png.import -> Planets/Planet_Pack_bycancer/original_Size/exoplanet32x32.png.import
+Scripts/Planet_Pack_bycancer/original_Size/iceplanet32x32.png -> Planets/Planet_Pack_bycancer/original_Size/iceplanet32x32.png
+Scripts/Planet_Pack_bycancer/original_Size/iceplanet32x32.png.import -> Planets/Planet_Pack_bycancer/original_Size/iceplanet32x32.png.import
+Scripts/Planet_Pack_bycancer/original_Size/moon27x26.png -> Planets/Planet_Pack_bycancer/original_Size/moon27x26.png
+Scripts/Planet_Pack_bycancer/original_Size/moon27x26.png.import -> Planets/Planet_Pack_bycancer/original_Size/moon27x26.png.import
+Scripts/Planet_Pack_bycancer/original_Size/neptunlikeplanet32x32.png -> Planets/Planet_Pack_bycancer/original_Size/neptunlikeplanet32x32.png
+Scripts/Planet_Pack_bycancer/original_Size/neptunlikeplanet32x32.png.import -> Planets/Planet_Pack_bycancer/original_Size/neptunlikeplanet32x32.png.import
+Scripts/Planet_Pack_bycancer/original_Size/org_iceplanet.png -> Planets/Planet_Pack_bycancer/original_Size/org_iceplanet.png
+Scripts/Planet_Pack_bycancer/original_Size/org_iceplanet.png.import -> Planets/Planet_Pack_bycancer/original_Size/org_iceplanet.png.import
+Scripts/Planet_Pack_bycancer/original_Size/org_lava_planet.png -> Planets/Planet_Pack_bycancer/original_Size/org_lava_planet.png
+Scripts/Planet_Pack_bycancer/original_Size/org_lava_planet.png.import -> Planets/Planet_Pack_bycancer/original_Size/org_lava_planet.png.import
+Scripts/Planet_Pack_bycancer/original_Size/org_machine_world.png -> Planets/Planet_Pack_bycancer/original_Size/org_machine_world.png
+Scripts/Planet_Pack_bycancer/original_Size/org_machine_world.png.import -> Planets/Planet_Pack_bycancer/original_Size/org_machine_world.png.import
+Scripts/Planet_Pack_bycancer/original_Size/org_shattered_planet.png -> Planets/Planet_Pack_bycancer/original_Size/org_shattered_planet.png
+Scripts/Planet_Pack_bycancer/original_Size/org_shattered_planet.png.import -> Planets/Planet_Pack_bycancer/original_Size/org_shattered_planet.png.import
+Scripts/Planet_Pack_bycancer/original_Size/sphereplanet70x70.png -> Planets/Planet_Pack_bycancer/original_Size/sphereplanet70x70.png
+Scripts/Planet_Pack_bycancer/original_Size/sphereplanet70x70.png.import -> Planets/Planet_Pack_bycancer/original_Size/sphereplanet70x70.png.import
+Scripts/Planet_Pack_bycancer/original_Size/sun40x40.png -> Planets/Planet_Pack_bycancer/original_Size/sun40x40.png
+Scripts/Planet_Pack_bycancer/original_Size/sun40x40.png.import -> Planets/Planet_Pack_bycancer/original_Size/sun40x40.png.import
+Scripts/Planet_Pack_bycancer/shattered_planet.png -> Planets/Planet_Pack_bycancer/shattered_planet.png
+Scripts/Planet_Pack_bycancer/shattered_planet.png.import -> Planets/Planet_Pack_bycancer/shattered_planet.png.import
+Scripts/Planet_Pack_bycancer/sphereplanet.png -> Planets/Planet_Pack_bycancer/sphereplanet.png
+Scripts/Planet_Pack_bycancer/sphereplanet.png.import -> Planets/Planet_Pack_bycancer/sphereplanet.png.import
+Scripts/Planet_Pack_bycancer/sun.png -> Planets/Planet_Pack_bycancer/sun.png
+Scripts/Planet_Pack_bycancer/sun.png.import -> Planets/Planet_Pack_bycancer/sun.png.import
+cristalAmarelo.tscn -> Cenas/cristalAmarelo.tscn
+cristal_azul.tscn -> Cenas/cristal_azul.tscn
+cristal_roxo.tscn -> Cenas/cristal_roxo.tscn
+cristal_verde.tscn -> Cenas/cristal_verde.tscn
+daydream_3/Daydream DEMO.otf -> Fontes/daydream_3/Daydream DEMO.otf
+daydream_3/Daydream DEMO.otf.import -> Fontes/daydream_3/Daydream DEMO.otf.import
+daydream_3/READ ME.rtf -> Fontes/daydream_3/READ ME.rtf
+enemy.gd -> Scripts/enemy.gd
+enemy.gd.uid -> Scripts/enemy.gd.uid
+enemy.tscn -> Cenas/enemy.tscn
+fe_font/FE-FONT.TTF -> Fontes/fe_font/FE-FONT.TTF
+fe_font/FE-FONT.TTF.import -> Fontes/fe_font/FE-FONT.TTF.import
+filter.png -> Imagens/filter.png
+filter.png.import -> Imagens/filter.png.import
+final.gd -> Scripts/final.gd
+final.gd.uid -> Scripts/final.gd.uid
+final.tscn -> Cenas/final.tscn
+foguetemarte.gd -> Scripts/foguetemarte.gd
+foguetemarte.gd.uid -> Scripts/foguetemarte.gd.uid
+foguetemarte.tscn -> Cenas/foguetemarte.tscn
+game_over.tscn1476671092.tmp -> Cenas/Backups/game_over.tscn1476671092.tmp
+gamedata.gd -> Scripts/gamedata.gd
+gamedata.gd.uid -> Scripts/gamedata.gd.uid
+label.gd -> Scripts/label.gd
+label.gd.uid -> Scripts/label.gd.uid
+laser.aseprite -> Imagens/FontesEditaveis/laser.aseprite
+lua_2.tscn -> Cenas/lua_2.tscn
+lua_3.tscn -> Cenas/lua_3.tscn
+mario_kart_ds/Mario-Kart-DS.ttf -> Fontes/mario_kart_ds/Mario-Kart-DS.ttf
+mario_kart_ds/Mario-Kart-DS.ttf.import -> Fontes/mario_kart_ds/Mario-Kart-DS.ttf.import
+marte_2.tscn -> Cenas/marte_2.tscn
+marte_3.tscn -> Cenas/marte_3.tscn
+nave_final.gd -> Scripts/nave_final.gd
+nave_final.gd.uid -> Scripts/nave_final.gd.uid
+nave_final.tscn -> Cenas/nave_final.tscn
+oxygen_counter.aseprite -> Imagens/FontesEditaveis/oxygen_counter.aseprite
+oxygen_counter.png -> Imagens/oxygen_counter.png
+oxygen_counter.png.import -> Imagens/oxygen_counter.png.import
+pause.gd -> Scripts/pause.gd
+pause.gd.uid -> Scripts/pause.gd.uid
+pause.png -> Imagens/pause.png
+pause.png.import -> Imagens/pause.png.import
+pause.tscn -> Cenas/pause.tscn
+pixel_fade.gd -> Scripts/pixel_fade.gd
+pixel_fade.gd.uid -> Scripts/pixel_fade.gd.uid
+pixelart_starfield.png -> Fundos/pixelart_starfield.png
+pixelart_starfield.png.import -> Fundos/pixelart_starfield.png.import
+pixelart_starfield_corona.png -> Fundos/pixelart_starfield_corona.png
+pixelart_starfield_corona.png.import -> Fundos/pixelart_starfield_corona.png.import
+pixelart_starfield_diagonal_diffraction_spikes.png -> Fundos/pixelart_starfield_diagonal_diffraction_spikes.png
+pixelart_starfield_diagonal_diffraction_spikes.png.import -> Fundos/pixelart_starfield_diagonal_diffraction_spikes.png.import
+pixelfade.gdshader -> Shaders/pixelfade.gdshader
+pixelfade.gdshader.uid -> Shaders/pixelfade.gdshader.uid
+sickle_walk.png -> Imagens/sickle_walk.png
+sickle_walk.png.import -> Imagens/sickle_walk.png.import
+sons_sem_atraso/catsound.wav -> Sounds/sons_sem_atraso/catsound.wav
+sons_sem_atraso/catsound.wav.import -> Sounds/sons_sem_atraso/catsound.wav.import
+sons_sem_atraso/clicksound.wav -> Sounds/sons_sem_atraso/clicksound.wav
+sons_sem_atraso/clicksound.wav.import -> Sounds/sons_sem_atraso/clicksound.wav.import
+sons_sem_atraso/gameoversound.wav -> Sounds/sons_sem_atraso/gameoversound.wav
+sons_sem_atraso/gameoversound.wav.import -> Sounds/sons_sem_atraso/gameoversound.wav.import
+sons_sem_atraso/jumpsound.wav -> Sounds/sons_sem_atraso/jumpsound.wav
+sons_sem_atraso/jumpsound.wav.import -> Sounds/sons_sem_atraso/jumpsound.wav.import
+sons_sem_atraso/killsound.wav -> Sounds/sons_sem_atraso/killsound.wav
+sons_sem_atraso/killsound.wav.import -> Sounds/sons_sem_atraso/killsound.wav.import
+sons_sem_atraso/oxygensoundB_ajustado.wav -> Sounds/sons_sem_atraso/oxygensoundB_ajustado.wav
+sons_sem_atraso/oxygensoundB_ajustado.wav.import -> Sounds/sons_sem_atraso/oxygensoundB_ajustado.wav.import
+sons_sem_atraso/rocketsound.wav -> Sounds/sons_sem_atraso/rocketsound.wav
+sons_sem_atraso/rocketsound.wav.import -> Sounds/sons_sem_atraso/rocketsound.wav.import
+sons_sem_atraso.zip -> Sounds/ArquivosFonte/sons_sem_atraso.zip
+tpmarte_2.gd -> Scripts/tpmarte_2.gd
+tpmarte_2.gd.uid -> Scripts/tpmarte_2.gd.uid
+tpmarte_2.tscn -> Cenas/tpmarte_2.tscn
+tpmarte_3.gd -> Scripts/tpmarte_3.gd
+tpmarte_3.gd.uid -> Scripts/tpmarte_3.gd.uid
+tpmarte_3.tscn -> Cenas/tpmarte_3.tscn
+tutorial.tscn -> Cenas/tutorial.tscn
+xeno-grunt-run.png -> Imagens/xeno-grunt-run.png
+xeno-grunt-run.png.import -> Imagens/xeno-grunt-run.png.import

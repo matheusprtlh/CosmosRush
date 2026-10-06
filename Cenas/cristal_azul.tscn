@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0liqhk8b8xfh"]
+
+[ext_resource type="Script" uid="uid://3gcttytvlgk4" path="res://Scripts/cristal.gd" id="1_ay01c"]
+[ext_resource type="Texture2D" uid="uid://bry83y4tkobni" path="res://Imagens/cristalazul.png" id="2_udsaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy0rg"]
+size = Vector2(20, 23)
+
+[node name="cristalAzul" type="Area2D" unique_id=1338464399]
+position = Vector2(1, 0)
+script = ExtResource("1_ay01c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1785765076]
+texture = ExtResource("2_udsaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=36612360]
+shape = SubResource("RectangleShape2D_uy0rg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

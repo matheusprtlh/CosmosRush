@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b0ppayvnq60w0"]
+
+[ext_resource type="Script" uid="uid://bod075rkl7gra" path="res://Scripts/final.gd" id="1_qt6nr"]
+[ext_resource type="AudioStream" uid="uid://fnf1073go3jb" path="res://Sounds/floraphonic-percussive-drum-hit-2-189788.mp3" id="2_7678y"]
+[ext_resource type="AudioStream" uid="uid://rewnckpg617s" path="res://Sounds/spacesound.mp3" id="3_fp1em"]
+[ext_resource type="FontFile" uid="uid://xnosdh6dxbk7" path="res://Fontes/fe_font/FE-FONT.TTF" id="4_7678y"]
+[ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
+
+[node name="Final" type="Control" unique_id=2005954170]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qt6nr")
+
+[node name="TelaPreta" type="ColorRect" parent="." unique_id=1474479888]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="SomTambor" type="AudioStreamPlayer" parent="." unique_id=1725549512]
+stream = ExtResource("2_7678y")
+
+[node name="SpaceSound" type="AudioStreamPlayer" parent="." unique_id=999365977]
+stream = ExtResource("3_fp1em")
+
+[node name="Obrigado" type="Label" parent="." unique_id=1589577467]
+visible = false
+layout_mode = 0
+offset_left = 124.000015
+offset_top = 256.0
+offset_right = 302.00003
+offset_bottom = 279.0
+scale = Vector2(4.968666, 4.968666)
+theme_override_fonts/font = ExtResource("4_7678y")
+text = "OBRIGADO POR JOGAR"
+[node name="ColorRect" parent="." instance=ExtResource("fade_transition")]
+
