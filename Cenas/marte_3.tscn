@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="10_tuxng"]
 [ext_resource type="PackedScene" uid="uid://gc3fvffg6ssd" path="res://Cenas/capsula.tscn" id="12_ecddl"]
 [ext_resource type="AudioStream" uid="uid://be4jb4cwq4yb4" path="res://Sounds/martesound.mp3" id="12_g22js"]
+[ext_resource type="Shader" uid="uid://dc7g451dbfrc4" path="res://Cenas/marte.gdshader" id="13_epanc"]
 [ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh501"]
@@ -108,6 +109,26 @@ texture = ExtResource("1_etaac")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3l4wp")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vql1b"]
+shader = ExtResource("13_epanc")
+shader_parameter/intensidade_filtro = 0.75
+shader_parameter/saturacao = 1.25
+shader_parameter/contraste = 1.08
+shader_parameter/brilho = 0.045
+shader_parameter/cor_laranja = Color(1, 0.58, 0.24, 1)
+shader_parameter/cor_dourada = Color(1, 0.89, 0.55, 1)
+shader_parameter/cor_rosa = Color(1, 0.48, 0.38, 1)
+shader_parameter/forca_laranja = 0.454000021565
+shader_parameter/forca_rosa = 0.1350000064125
+shader_parameter/posicao_sol = Vector2(1, 0)
+shader_parameter/forca_sol = 0.85
+shader_parameter/alcance_sol = 1.6150000734526202
+shader_parameter/resolucao = Vector2(640, 360)
+shader_parameter/tamanho_pixel = 4.0
+shader_parameter/intensidade_raios = 0.22
+shader_parameter/quantidade_raios = 14.0
+shader_parameter/velocidade_raios = 0.6370000302575
+
 [node name="marte3" type="Node2D" unique_id=466332081]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1712265762]
@@ -204,3 +225,10 @@ autoplay = true
 parameters/looping = true
 
 [node name="ColorRect" parent="." unique_id=1775768479 instance=ExtResource("fade_transition")]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=814445734]
+material = SubResource("ShaderMaterial_vql1b")
+offset_left = 420.0
+offset_top = -129.0
+offset_right = 1002.0
+offset_bottom = 197.0

@@ -2,10 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cgclbj017nqpw" path="res://TileMaps/sTileset.png" id="1_dk503"]
 [ext_resource type="Texture2D" uid="uid://cf0n3k2m255m2" path="res://Fundos/Clouds/Clouds 7/1.png" id="2_0vx45"]
-[ext_resource type="Texture2D" uid="uid://ba2f6lh21nlej" path="res://Fundos/Clouds/Clouds 7/2.png" id="3_plfxv"]
-[ext_resource type="Texture2D" uid="uid://btjgu33clcwlp" path="res://Fundos/Clouds/Clouds 7/3.png" id="4_ky1ua"]
-[ext_resource type="Texture2D" uid="uid://c7eu235p7egtc" path="res://Fundos/Clouds/Clouds 6/4.png" id="5_60efk"]
-[ext_resource type="Texture2D" uid="uid://br1f8ksbwxvlj" path="res://Fundos/Clouds/Clouds 6/5.png" id="6_nmst0"]
 [ext_resource type="PackedScene" uid="uid://c6gvac7uhoitp" path="res://Cenas/player.tscn" id="7_plfxv"]
 [ext_resource type="PackedScene" uid="uid://dfuuul6bsbcb3" path="res://Cenas/tpmarte_2.tscn" id="9_bn3l0"]
 [ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="10_yh501"]
@@ -14,7 +10,28 @@
 [ext_resource type="AudioStream" uid="uid://be4jb4cwq4yb4" path="res://Sounds/martesound.mp3" id="12_qi7fy"]
 [ext_resource type="FontFile" uid="uid://c7ehm3ebhnofs" path="res://Fontes/dk_longreach/DK Longreach.otf" id="14_4somv"]
 [ext_resource type="Script" uid="uid://4fcgionjfibu" path="res://Scripts/label_marte.gd" id="14_heflm"]
+[ext_resource type="Shader" uid="uid://dc7g451dbfrc4" path="res://Cenas/marte.gdshader" id="16_33gl2"]
 [ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebum8"]
+shader = ExtResource("16_33gl2")
+shader_parameter/intensidade_filtro = 0.75
+shader_parameter/saturacao = 1.25
+shader_parameter/contraste = 1.08
+shader_parameter/brilho = 0.045
+shader_parameter/cor_laranja = Color(1, 0.58, 0.24, 1)
+shader_parameter/cor_dourada = Color(1, 0.89, 0.55, 1)
+shader_parameter/cor_rosa = Color(1, 0.48, 0.38, 1)
+shader_parameter/forca_laranja = 0.454000021565
+shader_parameter/forca_rosa = 0.1350000064125
+shader_parameter/posicao_sol = Vector2(1, 0)
+shader_parameter/forca_sol = 0.85
+shader_parameter/alcance_sol = 1.6150000734526202
+shader_parameter/resolucao = Vector2(640, 360)
+shader_parameter/tamanho_pixel = 4.0
+shader_parameter/intensidade_raios = 0.22
+shader_parameter/quantidade_raios = 14.0
+shader_parameter/velocidade_raios = 0.6370000302575
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh501"]
 size = Vector2(69, 505)
@@ -113,6 +130,13 @@ sources/0 = SubResource("TileSetAtlasSource_3l4wp")
 
 [node name="marte" type="Node2D" unique_id=466332081]
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1245931540]
+material = SubResource("ShaderMaterial_ebum8")
+offset_left = 420.0
+offset_top = -129.0
+offset_right = 1002.0
+offset_bottom = 197.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1712265762]
 position = Vector2(515, 1)
 
@@ -136,39 +160,8 @@ scale = Vector2(1.256388, 1.256388)
 motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer" unique_id=206355582]
+position = Vector2(-1.5918651, 27.061707)
 texture = ExtResource("2_0vx45")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax1" unique_id=403136175]
-position = Vector2(363, 71)
-scale = Vector2(1.256388, 1.256388)
-motion_scale = Vector2(0.1, 0.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer2" unique_id=1936555838]
-texture = ExtResource("3_plfxv")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax1" unique_id=925390210]
-position = Vector2(363, 71)
-scale = Vector2(1.256388, 1.256388)
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer3" unique_id=83274359]
-texture = ExtResource("4_ky1ua")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax1" unique_id=1588921215]
-position = Vector2(363, 71)
-scale = Vector2(1.256388, 1.256388)
-motion_scale = Vector2(0.3, 0.3)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer4" unique_id=723135296]
-texture = ExtResource("5_60efk")
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax1" unique_id=206821717]
-position = Vector2(363, 71)
-scale = Vector2(1.256388, 1.256388)
-motion_scale = Vector2(0.35, 0.35)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer5" unique_id=409732681]
-texture = ExtResource("6_nmst0")
 
 [node name="PlayerMarte" parent="." unique_id=1032646401 instance=ExtResource("7_plfxv")]
 position = Vector2(456.00003, 81.999985)

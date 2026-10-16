@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://gc3fvffg6ssd" path="res://Cenas/capsula.tscn" id="9_k4hvo"]
 [ext_resource type="AudioStream" uid="uid://dymqu7ivmf04x" path="res://Sounds/ambientsound.mp3" id="10_yh1c4"]
 [ext_resource type="PackedScene" uid="uid://dboeydy7p6nf4" path="res://Cenas/enemy.tscn" id="11_x6qe0"]
+[ext_resource type="Shader" uid="uid://bue4dm5ri5fjq" path="res://Cenas/terrablur.gdshader" id="13_wsxr4"]
 [ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3on87"]
@@ -108,6 +109,44 @@ sources/0 = SubResource("TileSetAtlasSource_3on87")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvf33"]
 size = Vector2(69, 505)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crfd3"]
+shader = ExtResource("13_wsxr4")
+shader_parameter/saturacao = 1.4000000665
+shader_parameter/brilho = 0.10000001126977001
+shader_parameter/contraste = 1.1000000285
+shader_parameter/intensidade_filtro = 0.55
+shader_parameter/amarelo_sol = Color(1, 0.88, 0.52, 1)
+shader_parameter/rosa_suave = Color(1, 0.68, 0.8, 1)
+shader_parameter/intensidade_amarelo = 0.1250000059375
+shader_parameter/intensidade_rosa = 0.055
+shader_parameter/luz_ambiente = 0.08
+
+[sub_resource type="Gradient" id="Gradient_tf53k"]
+colors = PackedColorArray(1, 1, 0.6745098, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4c4o"]
+gradient = SubResource("Gradient_tf53k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f80bx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 324, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(20, 20, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_t4c4o")
+turbulence_enabled = true
+
 [node name="Terra3" type="Node2D" unique_id=1976400106]
 position = Vector2(-107, 93)
 
@@ -200,5 +239,17 @@ parameters/looping = true
 
 [node name="Enemy" parent="." unique_id=1901199238 instance=ExtResource("11_x6qe0")]
 position = Vector2(542, 214)
-[node name="ColorRect" parent="." instance=ExtResource("fade_transition")]
 
+[node name="ColorRect" parent="." unique_id=539313401 instance=ExtResource("fade_transition")]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1884790701]
+material = SubResource("ShaderMaterial_crfd3")
+offset_left = 374.0
+offset_top = -75.0
+offset_right = 950.0
+offset_bottom = 251.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1507797643]
+position = Vector2(662, 88)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_f80bx")
