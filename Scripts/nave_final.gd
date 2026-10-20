@@ -72,4 +72,4 @@ func _on_body_entered(body: Node2D) -> void:
 	final_musica.stop()
 
 	# Tela final
-	get_tree().current_scene.get_node("ColorRect/PixelFade").trocar_fase("res://Cenas/final.tscn")
+	TransicaoGlobal.get_node("PixelFade").trocar_fase("res://Cenas/final.tscn")

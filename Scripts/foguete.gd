@@ -60,4 +60,4 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(tempo_subida).timeout
 
 		# Vai para Marte
-		get_tree().current_scene.get_node("ColorRect/PixelFade").trocar_fase("res://Cenas/marte.tscn")
+		TransicaoGlobal.get_node("PixelFade").trocar_fase("res://Cenas/marte.tscn")

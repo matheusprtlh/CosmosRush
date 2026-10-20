@@ -4,7 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://fnf1073go3jb" path="res://Sounds/floraphonic-percussive-drum-hit-2-189788.mp3" id="2_7678y"]
 [ext_resource type="AudioStream" uid="uid://rewnckpg617s" path="res://Sounds/spacesound.mp3" id="3_fp1em"]
 [ext_resource type="FontFile" uid="uid://xnosdh6dxbk7" path="res://Fontes/fe_font/FE-FONT.TTF" id="4_7678y"]
-[ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
 
 [node name="Final" type="Control" unique_id=2005954170]
 layout_mode = 3
@@ -35,5 +34,3 @@ offset_bottom = 279.0
 scale = Vector2(4.968666, 4.968666)
 theme_override_fonts/font = ExtResource("4_7678y")
 text = "OBRIGADO POR JOGAR"
-[node name="ColorRect" parent="." instance=ExtResource("fade_transition")]
-

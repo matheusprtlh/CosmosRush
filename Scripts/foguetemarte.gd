@@ -55,4 +55,4 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(TEMPO_SUBIDA).timeout
 
 		# Lua
-		get_tree().current_scene.get_node("ColorRect/PixelFade").trocar_fase("res://Cenas/lua.tscn")
+		TransicaoGlobal.get_node("PixelFade").trocar_fase("res://Cenas/lua.tscn")

@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://gc3fvffg6ssd" path="res://Cenas/capsula.tscn" id="12_ecddl"]
 [ext_resource type="AudioStream" uid="uid://be4jb4cwq4yb4" path="res://Sounds/martesound.mp3" id="12_g22js"]
 [ext_resource type="Shader" uid="uid://dc7g451dbfrc4" path="res://Cenas/marte.gdshader" id="13_epanc"]
-[ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh501"]
 size = Vector2(69, 505)
@@ -224,11 +223,9 @@ stream = ExtResource("12_g22js")
 autoplay = true
 parameters/looping = true
 
-[node name="ColorRect" parent="." unique_id=1775768479 instance=ExtResource("fade_transition")]
-
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=814445734]
 material = SubResource("ShaderMaterial_vql1b")
 offset_left = 420.0
-offset_top = -129.0
+offset_top = -154.0
 offset_right = 1002.0
-offset_bottom = 197.0
+offset_bottom = 225.0

@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dboeydy7p6nf4" path="res://Cenas/enemy.tscn" id="11_lm1hl"]
 [ext_resource type="AudioStream" uid="uid://dymqu7ivmf04x" path="res://Sounds/ambientsound.mp3" id="12_bw53u"]
 [ext_resource type="Shader" uid="uid://bue4dm5ri5fjq" path="res://Cenas/terrablur.gdshader" id="14_6ya6c"]
-[ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3on87"]
 texture = ExtResource("1_x37kg")
@@ -240,8 +239,6 @@ position = Vector2(509, 214)
 stream = ExtResource("12_bw53u")
 autoplay = true
 parameters/looping = true
-
-[node name="ColorRect" parent="." unique_id=1884321004 instance=ExtResource("fade_transition")]
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1930769232]
 material = SubResource("ShaderMaterial_ysdtr")

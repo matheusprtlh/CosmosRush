@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://mk67bjqk01hf" path="res://Imagens/background_3.png" id="11_5rp13"]
 [ext_resource type="Texture2D" uid="uid://vemtc32ino8v" path="res://Imagens/background_4.png" id="12_a30yn"]
 [ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="14_ipip3"]
-[ext_resource type="PackedScene" uid="uid://c6d1urp024bwy" path="res://Cenas/color_rect.tscn" id="fade_transition"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gy20"]
 texture = ExtResource("3_t4eqm")
@@ -206,8 +205,6 @@ position = Vector2(592, 165)
 stream = ExtResource("6_t0mfn")
 autoplay = true
 parameters/looping = true
-
-[node name="ColorRect" parent="." unique_id=157027567 instance=ExtResource("fade_transition")]
 
 [node name="Pause" parent="." unique_id=2058679960 instance=ExtResource("14_ipip3")]
 anchors_preset = 10
