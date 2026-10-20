@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://Cenas/exit_light_ray.gdshader" id="1_ray"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ray"]
+shader = ExtResource("1_ray")
+
+[node name="ExitLightRay" type="Node2D"]
+
+[node name="Ray" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ray")
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 32.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
