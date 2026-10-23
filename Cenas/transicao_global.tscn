@@ -1,4 +1,4 @@
-[gd_scene format=3 ]
+[gd_scene format=3 uid="uid://ct7wc4o3mnkj8"]
 
 [ext_resource type="Shader" uid="uid://b6d50u65jsiy8" path="res://Shaders/pixelfade.gdshader" id="1_h40d6"]
 [ext_resource type="Script" uid="uid://b2jpmp7661htk" path="res://Scripts/pixel_fade.gd" id="2_var0u"]

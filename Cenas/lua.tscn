@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dboeydy7p6nf4" path="res://Cenas/enemy.tscn" id="14_djbkt"]
 [ext_resource type="FontFile" uid="uid://c7ehm3ebhnofs" path="res://Fontes/dk_longreach/DK Longreach.otf" id="15_odlhv"]
 [ext_resource type="Script" uid="uid://4fcgionjfibu" path="res://Scripts/label_marte.gd" id="16_m0dld"]
-[ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="18_raxjf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gy20"]
 texture = ExtResource("2_x8iww")
@@ -243,15 +242,5 @@ scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("15_odlhv")
 text = "LUA: Com apenas um sexto da gravidade da Terra, cada salto te leva muito mais longe."
 script = ExtResource("16_m0dld")
-
-[node name="Pause" parent="." unique_id=2058679960 instance=ExtResource("18_raxjf")]
-anchors_preset = 10
-anchor_bottom = 0.0
-offset_left = 248.00002
-offset_top = -146.00002
-offset_right = 248.00002
-offset_bottom = -146.00002
-grow_vertical = 1
-scale = Vector2(0.71999943, 0.71999943)
 
 [connection signal="body_entered" from="tplua" to="tplua" method="_on_body_entered"]

@@ -2,62 +2,20 @@
 
 [ext_resource type="Script" uid="uid://c4nogbvkvtcyc" path="res://Scripts/capsula.gd" id="1_nx4r7"]
 [ext_resource type="AudioStream" uid="uid://mro8vc60hiee" path="res://Sounds/sons_sem_atraso/oxygensoundB_ajustado.wav" id="3_4f2pp"]
-[ext_resource type="Texture2D" uid="uid://b0v15ijcxoukp" path="res://Imagens/oxygen-tank-pixel-art-vector.png" id="3_yx2qd"]
+[ext_resource type="Texture2D" uid="uid://5ujpcddfbhb3" path="res://Imagens/oxygenTank.png" id="3_yx2qd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yvqx"]
-size = Vector2(8, 20)
+size = Vector2(6.0975623, 7.9268303)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tknhp"]
 atlas = ExtResource("3_yx2qd")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m0qim"]
-atlas = ExtResource("3_yx2qd")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6nrad"]
-atlas = ExtResource("3_yx2qd")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mlqmi"]
-atlas = ExtResource("3_yx2qd")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xskn2"]
-atlas = ExtResource("3_yx2qd")
-region = Rect2(64, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0t1s3"]
-atlas = ExtResource("3_yx2qd")
-region = Rect2(80, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5whf8"]
-atlas = ExtResource("3_yx2qd")
-region = Rect2(96, 0, 16, 32)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebum8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tknhp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m0qim")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6nrad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mlqmi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xskn2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0t1s3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5whf8")
 }],
 "loop": 1,
 "name": &"default",
@@ -65,10 +23,11 @@ animations = [{
 }]
 
 [node name="Capsula" type="Area2D" unique_id=1665478055]
-scale = Vector2(1.6399996, 1.6399996)
+scale = Vector2(2.479999, 2.479999)
 script = ExtResource("1_nx4r7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1375193039]
+position = Vector2(-1.4537721e-07, -0.30487812)
 shape = SubResource("RectangleShape2D_0yvqx")
 
 [node name="SomOxigenio" type="AudioStreamPlayer" parent="." unique_id=746250644]
@@ -76,6 +35,7 @@ stream = ExtResource("3_4f2pp")
 volume_db = -2.737
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=268899965]
+scale = Vector2(0.14634168, 0.14634168)
 sprite_frames = SubResource("SpriteFrames_ebum8")
 autoplay = "default"
 frame_progress = 0.5819595

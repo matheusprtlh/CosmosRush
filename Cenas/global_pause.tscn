@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="1_pause"]
+
+[node name="GlobalPause" type="CanvasLayer"]
+layer = 90
+process_mode = 3
+
+[node name="Pause" parent="." instance=ExtResource("1_pause")]

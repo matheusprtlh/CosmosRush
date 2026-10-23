@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7", "Mobile")
 
 Gamedata="*res://Scripts/gamedata.gd"
 TransicaoGlobal="*res://Cenas/transicao_global.tscn"
+GlobalPause="*res://Cenas/global_pause.tscn"
 
 [display]
 

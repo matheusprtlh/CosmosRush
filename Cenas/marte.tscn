@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cf0n3k2m255m2" path="res://Fundos/Clouds/Clouds 7/1.png" id="2_0vx45"]
 [ext_resource type="PackedScene" uid="uid://c6gvac7uhoitp" path="res://Cenas/player.tscn" id="7_plfxv"]
 [ext_resource type="PackedScene" uid="uid://dfuuul6bsbcb3" path="res://Cenas/tpmarte_2.tscn" id="9_bn3l0"]
-[ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="10_yh501"]
 [ext_resource type="PackedScene" uid="uid://dboeydy7p6nf4" path="res://Cenas/enemy.tscn" id="11_t2qm4"]
 [ext_resource type="PackedScene" uid="uid://gc3fvffg6ssd" path="res://Cenas/capsula.tscn" id="12_6a1n8"]
 [ext_resource type="AudioStream" uid="uid://be4jb4cwq4yb4" path="res://Sounds/martesound.mp3" id="12_qi7fy"]
@@ -177,14 +176,6 @@ zoom = Vector2(2, 2)
 
 [node name="tpmarte2" parent="." unique_id=332397142 instance=ExtResource("9_bn3l0")]
 position = Vector2(362, -228)
-
-[node name="Pause" parent="." unique_id=2058679960 instance=ExtResource("10_yh501")]
-visible = false
-offset_left = 295.0
-offset_top = -199.0
-offset_right = 295.0
-offset_bottom = -199.0
-scale = Vector2(0.71999943, 0.71999943)
 
 [node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("12_6a1n8")]
 position = Vector2(945, 21)

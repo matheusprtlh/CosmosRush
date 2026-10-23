@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://br1f8ksbwxvlj" path="res://Fundos/Clouds/Clouds 6/5.png" id="6_g22js"]
 [ext_resource type="PackedScene" uid="uid://c6gvac7uhoitp" path="res://Cenas/player.tscn" id="7_1og3h"]
 [ext_resource type="PackedScene" uid="uid://c4pbybd63eotj" path="res://Cenas/foguetemarte.tscn" id="9_msblk"]
-[ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="10_tuxng"]
 [ext_resource type="PackedScene" uid="uid://gc3fvffg6ssd" path="res://Cenas/capsula.tscn" id="12_ecddl"]
 [ext_resource type="AudioStream" uid="uid://be4jb4cwq4yb4" path="res://Sounds/martesound.mp3" id="12_g22js"]
 [ext_resource type="Shader" uid="uid://dc7g451dbfrc4" path="res://Cenas/marte.gdshader" id="13_epanc"]
@@ -203,14 +202,6 @@ zoom = Vector2(2, 2)
 [node name="foguetemarte" parent="." unique_id=1046910199 instance=ExtResource("9_msblk")]
 position = Vector2(941, -150)
 scale = Vector2(0.44, 0.44)
-
-[node name="Pause" parent="." unique_id=2058679960 instance=ExtResource("10_tuxng")]
-visible = false
-offset_left = 292.0
-offset_top = -188.00002
-offset_right = 292.0
-offset_bottom = -188.00002
-scale = Vector2(0.71999943, 0.71999943)
 
 [node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("12_ecddl")]
 position = Vector2(949, 37)

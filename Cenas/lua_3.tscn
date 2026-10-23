@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://d0wpy0e4tdanv" path="res://Imagens/background_2.png" id="10_hngii"]
 [ext_resource type="Texture2D" uid="uid://mk67bjqk01hf" path="res://Imagens/background_3.png" id="11_5rp13"]
 [ext_resource type="Texture2D" uid="uid://vemtc32ino8v" path="res://Imagens/background_4.png" id="12_a30yn"]
-[ext_resource type="PackedScene" uid="uid://dw7ddrl7y8613" path="res://Cenas/pause.tscn" id="14_ipip3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gy20"]
 texture = ExtResource("3_t4eqm")
@@ -206,12 +205,3 @@ stream = ExtResource("6_t0mfn")
 autoplay = true
 parameters/looping = true
 
-[node name="Pause" parent="." unique_id=2058679960 instance=ExtResource("14_ipip3")]
-anchors_preset = 10
-anchor_bottom = 0.0
-offset_left = 248.00002
-offset_top = -146.00002
-offset_right = 248.00002
-offset_bottom = -146.00002
-grow_vertical = 1
-scale = Vector2(0.71999943, 0.71999943)

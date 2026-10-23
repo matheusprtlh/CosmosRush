@@ -5,7 +5,7 @@ extends Control
 
 func _on_button_pressed() -> void:
 	await tocar_click()
-	get_tree().change_scene_to_file("res://Cenas/terra_1.tscn")
+	TransicaoGlobal.get_node("PixelFade").trocar_fase("res://nave.tscn")
 
 
 func _on_button_2_pressed() -> void:

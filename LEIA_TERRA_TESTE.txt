@@ -1,6 +1,0 @@
-CENA NOVA: res://Cenas/terra_teste_01.tscn
-Abra a cena no Godot e pressione F6 para testar isoladamente.
-Base: terra_1.tscn, com fundo, pause, jogador, musica, capsulas e inimigo preservados.
-TileSet original: TileMaps/sTileset.png; 16x16 pixels. Camera zoom 2x, posicionada em (288,140).
-O mapa foi redesenhado em 37 colunas, com chao principal e tres plataformas elevadas.
-Cena experimental independente; nao altera o fluxo de fases do jogo.
