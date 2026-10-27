@@ -203,12 +203,6 @@ zoom = Vector2(2, 2)
 position = Vector2(941, -150)
 scale = Vector2(0.44, 0.44)
 
-[node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("12_ecddl")]
-position = Vector2(949, 37)
-
-[node name="Capsula2" parent="." unique_id=247292778 instance=ExtResource("12_ecddl")]
-position = Vector2(443.00006, 75)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1539281327]
 stream = ExtResource("12_g22js")
 autoplay = true
@@ -220,3 +214,12 @@ offset_left = 420.0
 offset_top = -154.0
 offset_right = 1002.0
 offset_bottom = 225.0
+
+[node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("12_ecddl")]
+position = Vector2(471, 132)
+
+[node name="Capsula2" parent="." unique_id=1468925260 instance=ExtResource("12_ecddl")]
+position = Vector2(957, 49)
+
+[node name="Capsula3" parent="." unique_id=98062339 instance=ExtResource("12_ecddl")]
+position = Vector2(727, -82)

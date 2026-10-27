@@ -110,7 +110,7 @@ size = Vector2(69, 505)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_crfd3"]
 shader = ExtResource("13_wsxr4")
 shader_parameter/saturacao = 1.4000000665
-shader_parameter/brilho = 0.10000001126977001
+shader_parameter/brilho = 0.10000001126977
 shader_parameter/contraste = 1.1000000285
 shader_parameter/intensidade_filtro = 0.55
 shader_parameter/amarelo_sol = Color(1, 0.88, 0.52, 1)
@@ -215,14 +215,6 @@ shape = SubResource("RectangleShape2D_xvf33")
 position = Vector2(423, 27)
 scale = Vector2(2, 2)
 
-[node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("9_k4hvo")]
-position = Vector2(474, 198)
-scale = Vector2(1.705022, 1.705022)
-
-[node name="Capsula2" parent="." unique_id=120340232 instance=ExtResource("9_k4hvo")]
-position = Vector2(911, 78)
-scale = Vector2(1.705022, 1.705022)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1639929387]
 stream = ExtResource("10_yh1c4")
 autoplay = true
@@ -242,3 +234,9 @@ offset_bottom = 251.0
 position = Vector2(662, 88)
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_f80bx")
+
+[node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("9_k4hvo")]
+position = Vector2(608, 200.00002)
+
+[node name="Capsula2" parent="." unique_id=169813315 instance=ExtResource("9_k4hvo")]
+position = Vector2(750, 34)

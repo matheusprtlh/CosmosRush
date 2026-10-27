@@ -4,8 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://mro8vc60hiee" path="res://Sounds/sons_sem_atraso/oxygensoundB_ajustado.wav" id="3_4f2pp"]
 [ext_resource type="Texture2D" uid="uid://5ujpcddfbhb3" path="res://Imagens/oxygenTank.png" id="3_yx2qd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yvqx"]
-size = Vector2(6.0975623, 7.9268303)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lt5cn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tknhp"]
 atlas = ExtResource("3_yx2qd")
@@ -27,12 +26,13 @@ scale = Vector2(2.479999, 2.479999)
 script = ExtResource("1_nx4r7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1375193039]
-position = Vector2(-1.4537721e-07, -0.30487812)
-shape = SubResource("RectangleShape2D_0yvqx")
+position = Vector2(-0.8064519, 0)
+scale = Vector2(0.34322032, 0.34322032)
+shape = SubResource("CapsuleShape2D_lt5cn")
 
 [node name="SomOxigenio" type="AudioStreamPlayer" parent="." unique_id=746250644]
 stream = ExtResource("3_4f2pp")
-volume_db = -2.737
+volume_db = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=268899965]
 scale = Vector2(0.14634168, 0.14634168)

@@ -177,14 +177,6 @@ zoom = Vector2(2, 2)
 [node name="tpmarte2" parent="." unique_id=332397142 instance=ExtResource("9_bn3l0")]
 position = Vector2(362, -228)
 
-[node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("12_6a1n8")]
-position = Vector2(945, 21)
-scale = Vector2(1.6493856, 1.6493856)
-
-[node name="Capsula2" parent="." unique_id=784231773 instance=ExtResource("12_6a1n8")]
-position = Vector2(561.00006, -89)
-scale = Vector2(1.649385, 1.649385)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1120151882]
 stream = ExtResource("12_qi7fy")
 autoplay = true
@@ -204,3 +196,9 @@ offset_bottom = 36.0
 theme_override_fonts/font = ExtResource("14_4somv")
 text = "MARTE: Onde a gravidade é mais fraca, cada salto vai mais longe."
 script = ExtResource("14_heflm")
+
+[node name="Capsula" parent="." unique_id=1665478055 instance=ExtResource("12_6a1n8")]
+position = Vector2(690, 95)
+
+[node name="Capsula2" parent="." unique_id=1800384456 instance=ExtResource("12_6a1n8")]
+position = Vector2(562, -89)
