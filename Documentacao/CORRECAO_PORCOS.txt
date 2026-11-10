@@ -1,0 +1,19 @@
+COSMOS RUSH — CORREÇÃO DOS PORCOS POR PLANETA
+
+Terra: Cenas/enemy.tscn -> Imagens/piggy_terra.png
+Marte: Cenas/enemy_marte.tscn -> Imagens/piggy_marte.png
+Lua: Cenas/enemy_lua.tscn -> Imagens/piggy_lua.png
+
+Cenas existentes atualizadas: Cenas/marte.tscn e Cenas/lua.tscn.
+Terra_1, Terra_2 e Terra_3 continuam usando Cenas/enemy.tscn.
+Os mapas marte_2, marte_3, lua_2 e lua_3 não tinham porcos no ZIP original;
+nenhum foi adicionado arbitrariamente para não atrapalhar saltos ou progressão.
+
+Todas as cenas utilizam Scripts/enemy.gd, preservando colisão, movimento e dano.
+Cada cena tem o próprio recurso SpriteFrames embutido e um PNG separado.
+
+TESTE NO GODOT:
+1. Extraia o ZIP e abra project.godot.
+2. Teste Terra, Marte e Lua (primeira fase de cada).
+3. Confira se o sprite e animação exibidos correspondem ao planeta.
+4. Se modificar quadros pelo editor, confirme que o SpriteFrames está único.

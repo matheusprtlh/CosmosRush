@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://bgt4plua2026pig"]
+
+[ext_resource type="Script" uid="uid://c5umv3fcdey0d" path="res://Scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://sae6ed7ec7od" path="res://Imagens/piggy_lua.png" id="2_1ejt6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixugv"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7cdr"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l3su"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_105v5"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y826n"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl1bb"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3axeu"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj5gx"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qhl0"]
+atlas = ExtResource("2_1ejt6")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0i88t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixugv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7cdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l3su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_105v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y826n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl1bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3axeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj5gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qhl0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckb4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3si4x"]
+size = Vector2(24, 22)
+
+[node name="EnemyLua" type="CharacterBody2D" unique_id=1901199238]
+script = ExtResource("1_7k104")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=6195935]
+position = Vector2(0, -10)
+scale = Vector2(1.2378068, 1.2378068)
+sprite_frames = SubResource("SpriteFrames_0i88t")
+autoplay = "default"
+frame_progress = 0.064128585
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=868481992]
+shape = SubResource("RectangleShape2D_ckb4l")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1323499921]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=662562924]
+position = Vector2(0, -1)
+scale = Vector2(1.1600001, 1.1600001)
+shape = SubResource("RectangleShape2D_3si4x")
+
+[node name="WallCheck" type="RayCast2D" parent="." unique_id=790274457]
+position = Vector2(0, 6)
+target_position = Vector2(16, -12)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

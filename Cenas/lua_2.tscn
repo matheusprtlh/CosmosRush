@@ -1,17 +1,20 @@
 [gd_scene format=4 uid="uid://ci1v4peb63hcd"]
 
+[ext_resource type="Shader" uid="uid://bxhk8bv2ip77s" path="res://Cenas/lua.gdshader" id="1_5t51x"]
 [ext_resource type="PackedScene" uid="uid://c6gvac7uhoitp" path="res://Cenas/player.tscn" id="1_6vvfm"]
 [ext_resource type="Texture2D" uid="uid://cgclbj017nqpw" path="res://TileMaps/sTileset.png" id="3_8uy0k"]
 [ext_resource type="Script" uid="uid://k8u7yb2m0u6w" path="res://Scripts/tplua.gd" id="4_ig8ba"]
 [ext_resource type="PackedScene" uid="uid://gc3fvffg6ssd" path="res://Cenas/capsula.tscn" id="5_8uy0k"]
 [ext_resource type="PackedScene" uid="uid://bpn0tcw2ews5f" path="res://Cenas/cristal_verde.tscn" id="6_dc17e"]
 [ext_resource type="AudioStream" uid="uid://be4jb4cwq4yb4" path="res://Sounds/martesound.mp3" id="7_445ss"]
-[ext_resource type="Texture2D" uid="uid://rny8os55yyly" path="res://Imagens/filter.png" id="8_jph2g"]
-[ext_resource type="Texture2D" uid="uid://rr3y4lo1iwph" path="res://Fundos/pixelart_starfield.png" id="9_8egx8"]
-[ext_resource type="Texture2D" uid="uid://7trcyivvit2m" path="res://Imagens/background_1.png" id="10_fx21a"]
-[ext_resource type="Texture2D" uid="uid://d0wpy0e4tdanv" path="res://Imagens/background_2.png" id="11_3ivjg"]
-[ext_resource type="Texture2D" uid="uid://mk67bjqk01hf" path="res://Imagens/background_3.png" id="12_dqw5i"]
-[ext_resource type="Texture2D" uid="uid://vemtc32ino8v" path="res://Imagens/background_4.png" id="13_vcf25"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6t1f3"]
+shader = ExtResource("1_5t51x")
+shader_parameter/background_top = Color(0.004, 0.008, 0.035, 1)
+shader_parameter/background_bottom = Color(0.015, 0.025, 0.075, 1)
+shader_parameter/star_color = Color(0.85, 0.92, 1, 1)
+shader_parameter/star_brightness = 1.4
+shader_parameter/shooting_star_brightness = 2.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gy20"]
 texture = ExtResource("3_8uy0k")
@@ -125,45 +128,12 @@ size = Vector2(24, 14)
 
 [node name="lua2" type="Node2D" unique_id=2027944615]
 
-[node name="Filter" type="Sprite2D" parent="." unique_id=2050466941]
-position = Vector2(552.7293, 164.22935)
-scale = Vector2(18.63346, 17.899084)
-texture = ExtResource("8_jph2g")
-
-[node name="Parallax1" type="ParallaxBackground" parent="." unique_id=1527888661]
-
-[node name="PixelartStarfield" type="Sprite2D" parent="Parallax1" unique_id=1477449179]
-position = Vector2(566.50006, 166.3306)
-scale = Vector2(3.815626, 3.585433)
-texture = ExtResource("9_8egx8")
-
-[node name="ParallaxLayer" type="Parallax2D" parent="Parallax1" unique_id=832589785]
-scale = Vector2(5.298167, 5.298167)
-scroll_offset = Vector2(518, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer" unique_id=902622313]
-texture = ExtResource("10_fx21a")
-
-[node name="ParallaxLayer2" type="Parallax2D" parent="Parallax1" unique_id=1713579559]
-scale = Vector2(5.298167, 5.298167)
-scroll_offset = Vector2(518, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer2" unique_id=1211237906]
-texture = ExtResource("11_3ivjg")
-
-[node name="ParallaxLayer3" type="Parallax2D" parent="Parallax1" unique_id=1215042848]
-scale = Vector2(5.298167, 5.298167)
-scroll_offset = Vector2(518, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer3" unique_id=1351620037]
-texture = ExtResource("12_dqw5i")
-
-[node name="ParallaxLayer4" type="Parallax2D" parent="Parallax1" unique_id=978444036]
-scale = Vector2(5.298167, 5.298167)
-scroll_offset = Vector2(518, 320)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax1/ParallaxLayer4" unique_id=2028220402]
-texture = ExtResource("13_vcf25")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=408098961]
+material = SubResource("ShaderMaterial_6t1f3")
+offset_left = 374.0
+offset_top = -75.0
+offset_right = 950.0
+offset_bottom = 250.0
 
 [node name="PlayerLua" parent="." unique_id=1032646401 instance=ExtResource("1_6vvfm")]
 position = Vector2(947, 13.000015)

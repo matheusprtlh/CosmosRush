@@ -1,13 +1,12 @@
 [gd_scene format=4 uid="uid://1kxi8vfb4078"]
 
 [ext_resource type="Texture2D" uid="uid://yq7hna0lce47" path="res://TileMaps/16x16 Steel Tileset.png" id="1_ilgfq"]
-[ext_resource type="Script" uid="uid://cj1et0nbkecii" path="res://nave.gd" id="1_jemat"]
+[ext_resource type="Script" uid="uid://cj1et0nbkecii" path="res://Scripts/nave.gd" id="1_jemat"]
 [ext_resource type="PackedScene" uid="uid://c6gvac7uhoitp" path="res://Cenas/player.tscn" id="2_j1vys"]
-[ext_resource type="Shader" uid="uid://ewx7uhaf88jb" path="res://nave.gdshader" id="3_j1vys"]
-[ext_resource type="Texture2D" uid="uid://nue5vmu0nqrs" path="res://Imagens/FreeCatCharacterAnimations/1_Cat_Idle-Sheet.png" id="5_53dx7"]
-[ext_resource type="Script" uid="uid://cd3pudqc38u78" path="res://alarme_visual.gd" id="6_6rt8y"]
-[ext_resource type="Script" uid="uid://y5fw3q01pbai" path="res://fadeout.gd" id="7_1poy6"]
-[ext_resource type="Shader" uid="uid://drsm8bsyjkeq2" path="res://meteoro.gdshader" id="8_xqbh8"]
+[ext_resource type="Shader" uid="uid://ewx7uhaf88jb" path="res://Shaders/nave.gdshader" id="3_j1vys"]
+[ext_resource type="Script" uid="uid://cd3pudqc38u78" path="res://Scripts/alarme_visual.gd" id="6_6rt8y"]
+[ext_resource type="Script" uid="uid://y5fw3q01pbai" path="res://Scripts/fadeout.gd" id="7_1poy6"]
+[ext_resource type="Shader" uid="uid://drsm8bsyjkeq2" path="res://Shaders/meteoro.gdshader" id="8_xqbh8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebum8"]
 shader = ExtResource("3_j1vys")
@@ -21,14 +20,18 @@ shader_parameter/shooting_star_brightness = 2.0
 texture = ExtResource("1_ilgfq")
 0:0/0 = 0
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
 5:0/0 = 0
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
 2:2/0 = 0
 4:2/0 = 0
 7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:4/0 = 0
 2:4/0 = 0
 4:4/0 = 0
@@ -45,70 +48,6 @@ texture = ExtResource("1_ilgfq")
 [sub_resource type="TileSet" id="TileSet_uiv75"]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_j1vys")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rt8y"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1poy6"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqbh8"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrwbh"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ij32g"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gi7du"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qagoq"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p6wf0"]
-atlas = ExtResource("5_53dx7")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ebum8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6rt8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1poy6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xqbh8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xrwbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ij32g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gi7du")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qagoq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p6wf0")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 12.0
-}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xvf33"]
 shader = ExtResource("8_xqbh8")
@@ -139,19 +78,6 @@ tile_set = SubResource("TileSet_uiv75")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1894183774]
 position = Vector2(662, 88)
 zoom = Vector2(2, 2)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145864625]
-position = Vector2(399, 136)
-sprite_frames = SubResource("SpriteFrames_ebum8")
-autoplay = "default"
-frame_progress = 0.82245266
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=540840922]
-position = Vector2(925, 212)
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_ebum8")
-autoplay = "default"
-frame_progress = 0.5669538
 
 [node name="Player" parent="." unique_id=1032646401 instance=ExtResource("2_j1vys")]
 position = Vector2(403.00003, 195)
