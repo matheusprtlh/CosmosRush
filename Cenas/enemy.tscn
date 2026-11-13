@@ -77,7 +77,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckb4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3si4x"]
-size = Vector2(24, 22)
+size = Vector2(24, 20.482758)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1901199238]
 script = ExtResource("1_7k104")
@@ -95,12 +95,12 @@ shape = SubResource("RectangleShape2D_ckb4l")
 [node name="Area2D" type="Area2D" parent="." unique_id=1323499921]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=662562924]
-position = Vector2(0, -1)
+position = Vector2(0, -1.8800006)
 scale = Vector2(1.1600001, 1.1600001)
 shape = SubResource("RectangleShape2D_3si4x")
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=790274457]
 position = Vector2(0, 6)
-target_position = Vector2(16, -12)
+target_position = Vector2(14, -7)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
