@@ -32,7 +32,7 @@ func rodar_tutorial() -> void:
 		fade_in.tween_property(self, "modulate:a", 1.0, tempo_fade_in)
 		await fade_in.finished
 
-		await get_tree().create_timer(tempo_visivel).timeout
+		await get_tree().create_timer(tempo_visivel, false).timeout
 
 		var fade_out := create_tween()
 		fade_out.tween_property(self, "modulate:a", 0.0, tempo_fade_out)

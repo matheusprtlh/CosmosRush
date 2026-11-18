@@ -1,13 +1,19 @@
 extends Node
 
-var cristais: int = 0
-var tem_nucleo: bool = false
+var cristais: int:
+	get:
+		return cristais_coletados.size()
 
-func coletar_cristal() -> void:
-	if cristais < 4:
-		cristais += 1
-		print("Cristais: ", cristais, "/4")
+var cristais_coletados: Dictionary[String, bool] = {}
+
+
+func cristal_coletado(tipo: String) -> bool:
+	return cristais_coletados.has(tipo)
+
+
+func coletar_cristal(tipo: String) -> void:
+	cristais_coletados[tipo] = true
+
 
 func resetar_jogo() -> void:
-	cristais = 0
-	tem_nucleo = false
+	cristais_coletados.clear()

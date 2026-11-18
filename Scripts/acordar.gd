@@ -130,9 +130,6 @@ func finalizar_despertar() -> void:
 
 	tela_preta.queue_free()
 
-	print("Astronauta acordou!")
-
-
 func _exit_tree() -> void:
 	if is_instance_valid(camera):
 		camera.offset = posicao_original_camera

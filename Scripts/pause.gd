@@ -1,71 +1,84 @@
 extends Control
 
-# Uma unica instancia deste menu permanece ativa atraves do Autoload GlobalPause.
-# Todas as fases usam o mesmo ESC (ui_cancel) e o mesmo menu visual.
 const CENAS_SEM_PAUSE = [
-    "res://Cenas/menu.tscn",
-    "res://Cenas/game_over.tscn",
-    "res://Cenas/final.tscn",
-    "res://Cenas/loading.tscn"
+	"res://Cenas/menu.tscn",
+	"res://Cenas/game_over.tscn",
+	"res://Cenas/final.tscn",
+	"res://Cenas/loading.tscn"
 ]
 
 @onready var som_click: AudioStreamPlayer = $SomClick
+@onready var pixel_fade = TransicaoGlobal.get_node("PixelFade")
+@onready var botao_continuar: TextureButton = $CaixaPause/Continue
+
+var acao_em_andamento: bool = false
+
 
 func _ready() -> void:
-    process_mode = Node.PROCESS_MODE_ALWAYS
-    som_click.process_mode = Node.PROCESS_MODE_ALWAYS
-    hide()
-    get_tree().scene_changed.connect(_on_scene_changed)
+	hide()
+	get_tree().scene_changed.connect(_on_scene_changed)
 
 
 func _input(event: InputEvent) -> void:
-    if not event.is_action_pressed("ui_cancel") or event.is_echo():
-        return
+	if not event.is_action_pressed("ui_cancel") or event.is_echo():
+		return
 
-    var cena_atual: Node = get_tree().current_scene
-    if cena_atual == null or cena_atual.scene_file_path in CENAS_SEM_PAUSE:
-        return
+	var cena_atual := get_tree().current_scene
+	if acao_em_andamento or pixel_fade.trocando_fase:
+		return
+	if cena_atual == null or cena_atual.scene_file_path in CENAS_SEM_PAUSE:
+		return
 
-    if get_tree().paused:
-        continuar_jogo()
-    else:
-        pausar_jogo()
+	if get_tree().paused:
+		continuar_jogo()
+	else:
+		pausar_jogo()
 
-    get_viewport().set_input_as_handled()
+	get_viewport().set_input_as_handled()
 
 
 func _on_scene_changed(_nova_cena: Node) -> void:
-    # Um Pause global nao pode ficar aberto ao entrar numa nova cena.
-    continuar_jogo()
-
-
-func tocar_click() -> void:
-    som_click.play()
-    await get_tree().create_timer(0.08, true).timeout
+	continuar_jogo()
 
 
 func pausar_jogo() -> void:
-    show()
-    get_tree().paused = true
+	get_tree().paused = true
+	show()
+	botao_continuar.grab_focus()
 
 
 func continuar_jogo() -> void:
-    get_tree().paused = false
-    hide()
+	hide()
+	get_tree().paused = false
+	acao_em_andamento = false
+
+
+func executar_acao(destino: String = "", reiniciar: bool = false) -> void:
+	if acao_em_andamento or not visible:
+		return
+
+	acao_em_andamento = true
+	var cena_atual := get_tree().current_scene
+	som_click.play()
+	await get_tree().create_timer(0.08).timeout
+	if get_tree().current_scene != cena_atual:
+		return
+
+	continuar_jogo()
+	if reiniciar:
+		get_tree().reload_current_scene()
+	elif not destino.is_empty():
+		Gamedata.resetar_jogo()
+		get_tree().change_scene_to_file(destino)
 
 
 func _on_menu_pressed() -> void:
-    await tocar_click()
-    continuar_jogo()
-    get_tree().change_scene_to_file("res://Cenas/menu.tscn")
+	executar_acao("res://Cenas/menu.tscn")
 
 
 func _on_continue_pressed() -> void:
-    await tocar_click()
-    continuar_jogo()
+	executar_acao()
 
 
 func _on_restart_pressed() -> void:
-    await tocar_click()
-    continuar_jogo()
-    get_tree().reload_current_scene()
+	executar_acao("", true)

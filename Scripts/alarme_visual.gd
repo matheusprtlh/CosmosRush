@@ -120,10 +120,8 @@ func deixar_tela_preta() -> void:
 	# Ativa a tela preta
 	tela_preta.visible = true
 
-	print("Tela preta ativada aos 16 segundos!")
-
 	# Aguarda 3 segundos
-	await get_tree().create_timer(tempo_tela_preta).timeout
+	await get_tree().create_timer(tempo_tela_preta, false).timeout
 
 	# Troca para a Terra
 	get_tree().change_scene_to_file(
