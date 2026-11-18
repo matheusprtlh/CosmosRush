@@ -30,46 +30,31 @@ func _process(delta: float) -> void:
 		position.y -= VELOCIDADE_SUBIDA * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if ativada:
+	if ativada or not body is CosmosPlayer or Gamedata.cristais < 4:
 		return
-
-	if not body is CharacterBody2D:
-		return
-
-	if Gamedata.cristais < 4:
-		print("Faltam cristais! ", Gamedata.cristais, "/4")
+	if not body.preparar_saida(true):
 		return
 
 	ativada = true
-
-	# Player desaparece
-	body.visible = false
-	body.set_physics_process(false)
-
-	# Desativa a colisão
 	colisao.set_deferred("disabled", true)
-
-	# Sons da decolagem
 	som_foguete.play()
 	final_musica.play()
-
-	# Liga animação dos motores
 	anim.play("decolar")
 
-	# Vibra por 10 segundos
 	vibrando = true
-	await get_tree().create_timer(TEMPO_VIBRACAO).timeout
-
+	await get_tree().create_timer(TEMPO_VIBRACAO, false).timeout
 	vibrando = false
 	position = posicao_original
 
-	# Decola
 	subindo = true
-	await get_tree().create_timer(TEMPO_SUBIDA).timeout
-
-	# Para os sons da nave
+	await get_tree().create_timer(TEMPO_SUBIDA, false).timeout
 	som_foguete.stop()
 	final_musica.stop()
 
-	# Tela final
-	TransicaoGlobal.get_node("PixelFade").trocar_fase("res://Cenas/final.tscn")
+
+	if not await body.concluir_saida("res://Cenas/final.tscn"):
+		subindo = false
+		ativada = false
+		position = posicao_original
+		colisao.set_deferred("disabled", false)
+		anim.play("idle")

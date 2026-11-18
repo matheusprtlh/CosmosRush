@@ -203,8 +203,7 @@ position = Vector2(710, 34)
 zoom = Vector2(2, 2)
 
 [node name="tpmarte3" parent="." unique_id=332397142 instance=ExtResource("1_1mti8")]
-position = Vector2(420, 156)
-scale = Vector2(0.059865624, 0.059865624)
+position = Vector2(424, 146)
 
 [node name="cristalRoxo" parent="." unique_id=1584088600 instance=ExtResource("12_slhsb")]
 position = Vector2(507, 92.999985)

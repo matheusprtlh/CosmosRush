@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var player: CharacterBody2D = $Player
+@onready var player: CosmosPlayer = $Player
+
 
 func _ready() -> void:
-	player.oxigenio_maximo = 99999999
-	player.oxigenio_atual = 99999999
+	player.timer_oxigenio.stop()

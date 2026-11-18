@@ -27,37 +27,25 @@ func _process(delta: float) -> void:
 		position.y -= velocidade_subida * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if ativado:
+	if ativado or not body is CosmosPlayer:
+		return
+	if not body.preparar_saida(true):
 		return
 
-	if body is CharacterBody2D:
-		ativado = true
+	ativado = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	som_foguete.play()
 
-		# Faz o player desaparecer
-		body.visible = false
-		body.set_physics_process(false)
+	tremendo = true
+	await get_tree().create_timer(tempo_tremendo, false).timeout
+	tremendo = false
+	position = posicao_original
 
-		# Desativa a colisão do foguete
-		$CollisionShape2D.set_deferred("disabled", true)
+	subindo = true
+	await get_tree().create_timer(tempo_subida, false).timeout
 
-		# Toca o foguete
-		som_foguete.play()
-
-		# Começa a tremer
-		tremendo = true
-
-		# Fica tremendo por 5 segundos
-		await get_tree().create_timer(tempo_tremendo).timeout
-
-		# Para o tremor
-		tremendo = false
+	if not await body.concluir_saida("res://Cenas/marte.tscn"):
+		subindo = false
+		ativado = false
 		position = posicao_original
-
-		# Começa a subir
-		subindo = true
-
-		# Sobe durante 3 segundos
-		await get_tree().create_timer(tempo_subida).timeout
-
-		# Vai para Marte
-		TransicaoGlobal.get_node("PixelFade").trocar_fase("res://Cenas/marte.tscn")
+		$CollisionShape2D.set_deferred("disabled", false)

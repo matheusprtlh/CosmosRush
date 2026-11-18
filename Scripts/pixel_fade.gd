@@ -1,65 +1,65 @@
 extends ColorRect
 
-# Transição persistente: o CanvasLayer permanece na árvore ao trocar a fase.
 @export var duracao_entrada: float = 1.0
 @export var tempo_preenchido: float = 0.5
 @export var duracao_saida: float = 1.0
 
 @onready var shader_material: ShaderMaterial = material as ShaderMaterial
 var trocando_fase: bool = false
-var revelando: bool = false
+var revelacao_direta: Tween
+
 
 func _ready() -> void:
-	# O menu inicial não precisa começar coberto.
-	shader_material.set_shader_parameter("progress", 2.0)
+	_set_progress(2.0)
 	get_tree().scene_changed.connect(_on_scene_changed)
 
-func trocar_fase(caminho_da_fase: String) -> void:
-	if trocando_fase or caminho_da_fase.is_empty():
-		return
+
+func trocar_fase(caminho_da_fase: String) -> bool:
+	if trocando_fase:
+		return false
+	if not ResourceLoader.exists(caminho_da_fase, "PackedScene"):
+		push_error("Fase de destino inválida: " + caminho_da_fase)
+		return false
+
 	trocando_fase = true
-	# Se a entrada da fase ainda estiver revelando, interrompe o tween.
-	for tween in get_tree().get_processed_tweens():
-		if tween.is_valid() and tween.is_running() and tween.has_meta("cosmos_fade"):
-			tween.kill()
-	revelando = false
-	await _animar_progress(float(shader_material.get_shader_parameter("progress")), 1.0, duracao_entrada)
-	# A cobertura fica visível inclusive no frame em que a cena é removida.
-	shader_material.set_shader_parameter("progress", 1.0)
+	if revelacao_direta and revelacao_direta.is_valid():
+		revelacao_direta.kill()
+
+	var progresso := float(shader_material.get_shader_parameter("progress"))
+	await _animar_progress(progresso, 1.0, duracao_entrada).finished
+
 	var erro := get_tree().change_scene_to_file(caminho_da_fase)
-	if erro != OK:
+	if erro == OK:
+		await get_tree().scene_changed
+	else:
 		push_error("Não foi possível abrir a fase: " + caminho_da_fase)
-		await _revelar()
-		trocando_fase = false
-		return
-	# Aguarda a nova cena estar montada atrás do CanvasLayer global.
-	await get_tree().scene_changed
-	await _revelar()
+
+	await _animar_progress(1.0, 2.0, duracao_saida, tempo_preenchido).finished
 	trocando_fase = false
+	return erro == OK
+
 
 func _on_scene_changed(nova_cena: Node) -> void:
-	# Para trocas diretas (menu, retry), a nova fase também ganha fade de entrada.
-	if trocando_fase or revelando:
+	# Em trocas diretas, como reiniciar, apenas a revelação é necessária.
+	if trocando_fase:
 		return
-	if nova_cena.scene_file_path.begins_with("res://Cenas/terra_") or nova_cena.scene_file_path.begins_with("res://Cenas/marte") or nova_cena.scene_file_path.begins_with("res://Cenas/lua"):
-		shader_material.set_shader_parameter("progress", 1.0)
-		_revelar()
+	if revelacao_direta and revelacao_direta.is_valid():
+		revelacao_direta.kill()
+	_set_progress(2.0)
 
-func _revelar() -> void:
-	if revelando:
-		return
-	revelando = true
-	await get_tree().create_timer(tempo_preenchido).timeout
-	await _animar_progress(1.0, 2.0, duracao_saida)
-	revelando = false
+	var caminho := nova_cena.scene_file_path
+	if caminho.begins_with("res://Cenas/terra_") or caminho.begins_with("res://Cenas/marte") or caminho.begins_with("res://Cenas/lua"):
+		_set_progress(1.0)
+		revelacao_direta = _animar_progress(1.0, 2.0, duracao_saida, tempo_preenchido)
 
-func _animar_progress(inicio: float, fim: float, duracao: float) -> void:
-	var tween := create_tween()
-	tween.set_meta("cosmos_fade", true)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
+
+func _animar_progress(inicio: float, fim: float, duracao: float, espera: float = 0.0) -> Tween:
+	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if espera > 0.0:
+		tween.tween_interval(espera)
 	tween.tween_method(_set_progress, inicio, fim, duracao)
-	await tween.finished
+	return tween
+
 
 func _set_progress(valor: float) -> void:
 	shader_material.set_shader_parameter("progress", valor)

@@ -27,32 +27,25 @@ func _process(delta: float) -> void:
 		position.y -= VELOCIDADE_SUBIDA * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if ativado:
+	if ativado or not body is CosmosPlayer:
+		return
+	if not body.preparar_saida(true):
 		return
 
-	if body is CharacterBody2D:
-		ativado = true
+	ativado = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	som_foguete.play()
 
-		# Player desaparece
-		body.visible = false
-		body.set_physics_process(false)
+	vibrando = true
+	await get_tree().create_timer(TEMPO_VIBRACAO, false).timeout
+	vibrando = false
+	position = posicao_original
 
-		# Desativa colisão do foguete
-		$CollisionShape2D.set_deferred("disabled", true)
+	subindo = true
+	await get_tree().create_timer(TEMPO_SUBIDA, false).timeout
 
-		# Toca o som
-		som_foguete.play()
-
-		# Vibração
-		vibrando = true
-		await get_tree().create_timer(TEMPO_VIBRACAO).timeout
-
-		vibrando = false
+	if not await body.concluir_saida("res://Cenas/lua.tscn"):
+		subindo = false
+		ativado = false
 		position = posicao_original
-
-		# Decolagem
-		subindo = true
-		await get_tree().create_timer(TEMPO_SUBIDA).timeout
-
-		# Lua
-		TransicaoGlobal.get_node("PixelFade").trocar_fase("res://Cenas/lua.tscn")
+		$CollisionShape2D.set_deferred("disabled", false)
