@@ -368,6 +368,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1032646401]
+collision_layer = 2
+collision_mask = 5
 scale = Vector2(1.161599, 1.161599)
 script = ExtResource("1_yuqgu")
 

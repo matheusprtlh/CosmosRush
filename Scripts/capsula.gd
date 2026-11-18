@@ -39,17 +39,14 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if coletada:
+	if coletada or not body is CosmosPlayer or not body.recuperar_oxigenio():
 		return
 
-	if body.has_method("recuperar_oxigenio"):
-		coletada = true
-		body.recuperar_oxigenio()
-		emit_signal("capsula_coletada")
+	coletada = true
+	capsula_coletada.emit()
+	hide()
+	set_deferred("monitoring", false)
 
-		visible = false
-		$CollisionShape2D.set_deferred("disabled", true)
-
-		som_oxigenio.play()
-		await som_oxigenio.finished
-		queue_free()
+	som_oxigenio.play()
+	await som_oxigenio.finished
+	queue_free()

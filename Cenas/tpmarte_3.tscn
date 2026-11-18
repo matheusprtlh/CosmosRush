@@ -6,6 +6,8 @@
 size = Vector2(70, 221)
 
 [node name="tpmarte3" type="Area2D" unique_id=332397142]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_vutva")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152984734]

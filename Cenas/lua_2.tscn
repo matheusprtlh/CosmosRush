@@ -172,6 +172,8 @@ position = Vector2(1776, 135)
 shape = SubResource("RectangleShape2D_1yk3p")
 
 [node name="tplua2" type="Area2D" parent="." unique_id=1833390145]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("4_ig8ba")
 cena_destino = "res://Cenas/lua_3.tscn"
 

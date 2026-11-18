@@ -4,34 +4,40 @@ extends CharacterBody2D
 @export var gravidade: float = 800.0
 @export var dano: int = 15
 
-# 1 = direita; -1 = esquerda
-var dir: int = 1
+var direcao: int = 1
 
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_check: RayCast2D = $WallCheck
 @onready var floor_check: RayCast2D = $FloorCheck
+@onready var alcance_parede: float = absf(wall_check.target_position.x)
+@onready var distancia_borda: float = absf(floor_check.position.x)
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	velocity.x = direcao * velocidade
+
+	if is_on_floor():
+		if not caminho_livre(direcao):
+			if caminho_livre(-direcao):
+				direcao = -direcao
+				anim.flip_h = direcao < 0
+				velocity.x = direcao * velocidade
+			else:
+				velocity.x = 0.0
+	else:
 		velocity.y += gravidade * delta
 
-	# Atualiza os sensores antes de decidir o movimento.
-	wall_check.force_raycast_update()
-	floor_check.force_raycast_update()
-
-	if is_on_floor() and (wall_check.is_colliding() or not floor_check.is_colliding()):
-		inverter_direcao()
-
-	velocity.x = dir * velocidade
 	move_and_slide()
 
 
-func inverter_direcao() -> void:
-	dir *= -1
-	# Espelha sprite e sensores, preservando o comportamento original.
-	scale.x *= -1
+func caminho_livre(lado: int) -> bool:
+	wall_check.target_position.x = alcance_parede * lado
+	floor_check.position.x = distancia_borda * lado
+	wall_check.force_raycast_update()
+	floor_check.force_raycast_update()
+	return not wall_check.is_colliding() and floor_check.is_colliding()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("receber_dano"):
+	if body is CosmosPlayer:
 		body.receber_dano(dano, global_position)

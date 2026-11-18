@@ -22,6 +22,8 @@ animations = [{
 }]
 
 [node name="Capsula" type="Area2D" unique_id=1665478055]
+collision_layer = 0
+collision_mask = 2
 scale = Vector2(2.479999, 2.479999)
 script = ExtResource("1_nx4r7")
 

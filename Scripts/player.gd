@@ -1,3 +1,4 @@
+class_name CosmosPlayer
 extends CharacterBody2D
 
 # =========================================================
@@ -12,6 +13,12 @@ extends CharacterBody2D
 @export var speed: float = 110.0
 @export var jump_force: float = -290.0
 @export var gravity: float = 800.0
+@export_range(1.0, 3000.0) var aceleracao: float = 900.0
+@export_range(1.0, 3000.0) var desaceleracao: float = 1200.0
+
+@export_category("Dano")
+@export_range(0.01, 2.0) var tempo_protecao_dano: float = 0.25
+@export_range(0.01, 2.0) var tempo_knockback: float = 0.14
 
 
 # === CONFIGURAÇÕES DE MORTE ===
@@ -23,15 +30,18 @@ extends CharacterBody2D
 
 # === CONFIGURAÇÕES DE OXIGÊNIO ===
 @export_category("Oxigênio")
-@export var oxigenio_maximo: int = 100
-@export var perda_por_segundo: int = 1
-@export var recuperacao_capsula: int = 20
+@export_range(1, 1000) var oxigenio_maximo: int = 100
+@export_range(0, 1000) var perda_por_intervalo: int = 1
+@export_range(0.05, 10.0) var intervalo_consumo: float = 0.25
+@export_range(1, 1000) var recuperacao_capsula: int = 20
 
 
 # === ESTADO DO PLAYER ===
 var oxigenio_atual: int = 100
-var tem_nucleo: bool = false
 var ja_morreu: bool = false
+var saindo_da_fase: bool = false
+var protecao_dano_restante: float = 0.0
+var knockback_restante: float = 0.0
 
 
 # === NÓS ===
@@ -44,13 +54,14 @@ var ja_morreu: bool = false
 
 
 func _ready() -> void:
-	timer_oxigenio.wait_time = 0.25
+	timer_oxigenio.wait_time = intervalo_consumo
 	timer_oxigenio.one_shot = false
 
 	if not timer_oxigenio.timeout.is_connected(_on_timer_timeout):
 		timer_oxigenio.timeout.connect(_on_timer_timeout)
 
-	timer_oxigenio.start()
+	if perda_por_intervalo > 0:
+		timer_oxigenio.start()
 
 	oxigenio_atual = oxigenio_maximo
 
@@ -70,25 +81,25 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 
 	# === PULO ===
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_force
+	if protecao_dano_restante > 0.0:
+		protecao_dano_restante = maxf(protecao_dano_restante - delta, 0.0)
+		if protecao_dano_restante == 0.0:
+			anim.modulate = Color.WHITE
 
-	# === MOVIMENTO HORIZONTAL ===
-	var direction := Input.get_axis("ui_left", "ui_right")
-
-	if direction != 0:
-		velocity.x = direction * speed
-		anim.flip_h = direction < 0
+	if knockback_restante > 0.0:
+		knockback_restante = maxf(knockback_restante - delta, 0.0)
 	else:
-		velocity.x = move_toward(
-			velocity.x,
-			0,
-			speed
-		)
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = jump_force
+
+		var direcao := Input.get_axis("ui_left", "ui_right")
+		var taxa := aceleracao if direcao != 0.0 else desaceleracao
+		velocity.x = move_toward(velocity.x, direcao * speed, taxa * delta)
+		if direcao != 0.0:
+			anim.flip_h = direcao < 0.0
 
 	move_and_slide()
-
-	atualizar_animacao(direction)
+	atualizar_animacao()
 
 	# === MORTE POR QUEDA ===
 	if global_position.y > limite_queda:
@@ -99,7 +110,7 @@ func _physics_process(delta: float) -> void:
 # ANIMAÇÕES
 # =========================================================
 
-func atualizar_animacao(direction: float) -> void:
+func atualizar_animacao() -> void:
 	var anim_name := "idle"
 
 	if not is_on_floor():
@@ -108,7 +119,7 @@ func atualizar_animacao(direction: float) -> void:
 		else:
 			anim_name = "fall"
 
-	elif direction != 0:
+	elif absf(get_real_velocity().x) > 1.0:
 		anim_name = "run"
 
 	if anim.animation != anim_name:
@@ -120,10 +131,10 @@ func atualizar_animacao(direction: float) -> void:
 # =========================================================
 
 func _on_timer_timeout() -> void:
-	if ja_morreu:
+	if not pode_interagir():
 		return
 
-	oxigenio_atual -= perda_por_segundo
+	oxigenio_atual -= perda_por_intervalo
 	oxigenio_atual = max(oxigenio_atual, 0)
 
 	atualizar_ui_oxigenio()
@@ -161,24 +172,13 @@ func atualizar_ui_oxigenio() -> void:
 		)
 
 
-func recuperar_oxigenio(
-	quantidade: int = recuperacao_capsula
-) -> void:
+func recuperar_oxigenio() -> bool:
+	if not pode_interagir():
+		return false
 
-	if ja_morreu:
-		return
-
-	oxigenio_atual = min(
-		oxigenio_atual + quantidade,
-		oxigenio_maximo
-	)
-
+	oxigenio_atual = mini(oxigenio_atual + recuperacao_capsula, oxigenio_maximo)
 	atualizar_ui_oxigenio()
-
-
-func _on_capsula_body_entered(body: Node) -> void:
-	if body == self:
-		recuperar_oxigenio()
+	return true
 
 
 # =========================================================
@@ -198,47 +198,53 @@ func atualizar_hud_cristais() -> void:
 # DANO
 # =========================================================
 
-func receber_dano(
-	quantidade: int,
-	origem: Vector2
-) -> void:
-
-	if ja_morreu:
+func receber_dano(quantidade: int, origem: Vector2) -> void:
+	if not pode_interagir() or protecao_dano_restante > 0.0 or quantidade <= 0:
 		return
 
-	oxigenio_atual = max(
-		oxigenio_atual - quantidade,
-		0
-	)
-
+	oxigenio_atual = maxi(oxigenio_atual - quantidade, 0)
 	atualizar_ui_oxigenio()
 
-	if oxigenio_atual <= 0:
+	if oxigenio_atual == 0:
 		game_over()
 		return
 
-	# === KNOCKBACK ===
-	var direcao_knockback: float = signf(
-		global_position.x - origem.x
-	)
-
+	protecao_dano_restante = tempo_protecao_dano
+	knockback_restante = tempo_knockback
+	var direcao_knockback := signf(global_position.x - origem.x)
 	if direcao_knockback == 0.0:
-		direcao_knockback = 1.0
+		direcao_knockback = 1.0 if anim.flip_h else -1.0
 
-	velocity.x = direcao_knockback * 180.0
-	velocity.y = -140.0
+	velocity = Vector2(direcao_knockback * 180.0, -140.0)
+	anim.modulate = Color(1.0, 0.25, 0.25)
 
-	# === FEEDBACK VISUAL DE DANO ===
-	anim.modulate = Color(
-		1.0,
-		0.25,
-		0.25
-	)
 
-	await get_tree().create_timer(0.2).timeout
+func pode_interagir() -> bool:
+	return not ja_morreu and not saindo_da_fase
 
-	if is_instance_valid(anim) and not ja_morreu:
-		anim.modulate = Color.WHITE
+
+func preparar_saida(esconder: bool = false) -> bool:
+	if not pode_interagir():
+		return false
+
+	saindo_da_fase = true
+	visible = not esconder
+	timer_oxigenio.paused = true
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	return true
+
+
+func concluir_saida(destino: String) -> bool:
+	if await TransicaoGlobal.get_node("PixelFade").trocar_fase(destino):
+		return true
+
+	# Recupera os controles se a troca de cena falhar.
+	saindo_da_fase = false
+	visible = true
+	timer_oxigenio.paused = false
+	set_physics_process(true)
+	return false
 
 
 # =========================================================
@@ -254,8 +260,8 @@ func game_over() -> void:
 	timer_oxigenio.stop()
 
 	# === DESATIVA COLISÕES ===
-	collision_layer = 0
-	collision_mask = 0
+	set_deferred("collision_layer", 0)
+	set_deferred("collision_mask", 0)
 
 	# === MOVIMENTO DE MORTE ===
 	velocity.x = 0.0
@@ -264,7 +270,7 @@ func game_over() -> void:
 	anim.play("jump")
 
 	await get_tree().create_timer(
-		tempo_ate_game_over
+		tempo_ate_game_over, false
 	).timeout
 
 	get_tree().change_scene_to_file(

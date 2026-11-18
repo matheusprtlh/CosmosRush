@@ -86,6 +86,12 @@ atirar={
 
 3d/physics_engine="Jolt Physics"
 
+[layer_names]
+
+2d_physics/layer_1="Cenário"
+2d_physics/layer_2="Jogador"
+2d_physics/layer_3="Inimigos"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
