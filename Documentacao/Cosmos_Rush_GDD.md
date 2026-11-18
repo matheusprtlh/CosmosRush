@@ -1,10 +1,6 @@
 # GDD — Cosmos Rush
 
 
----
-
-# Cosmos Rush
-
 ## Elevator Pitch
 Cosmos Rush é um jogo de plataforma 2D espacial em que o jogador controla um astronauta e atravessa Terra, Marte e Lua. Cada planeta possui movimentação e gravidade próprias, enquanto o jogador precisa administrar o oxigênio, superar plataformas e inimigos e coletar quatro cristais espalhados pela jornada.
 
@@ -37,13 +33,12 @@ Jogo 2D com visual em pixel art e temática espacial. A progressão combina plat
 # Mecânicas e Controles
 
 ## Controles
-- A = mover para a esquerda
-- D = mover para a direita
-- W ou Espaço = pular
-- ESC = pausar o jogo
+- A/D, setas esquerda/direita ou analógico esquerdo para mover.
+- W, Espaço, Enter ou botão inferior do controle para pular.
+- Esc para pausar ou continuar.
 
 ## Movimento e Gravidade
-O personagem possui física diferente de acordo com o planeta.
+O personagem possui física diferente de acordo com o planeta. O controle horizontal ganha velocidade gradualmente, com aceleração de 900 px/s² e desaceleração de 1.200 px/s². As taxas são ajustáveis no Inspector. O impulso horizontal e vertical do dano tem prioridade sobre os controles por 0,14 s.
 
 ### Terra
 - Velocidade: 110
@@ -63,38 +58,35 @@ O personagem possui física diferente de acordo com o planeta.
 - É o ambiente de menor gravidade do jogo.
 
 ## Sistema de Oxigênio
-O jogador começa cada fase com 100 de oxigênio.
+O jogador começa cada fase com 100 de oxigênio. O consumo padrão é de 1 unidade a cada 0,25 s de jogo (4 unidades por segundo). Isso dá cerca de 25 s sem cápsulas nem dano. A nave introdutória tem oxigênio sem consumo. O consumo também é suspenso na pausa e após entrar em um portal ou embarcar em um foguete.
 
-O oxigênio diminui continuamente durante a partida. O HUD mostra:
-- valor atual;
-- valor máximo;
-- indicador visual da quantidade restante.
+O HUD indica a quantidade restante por uma barra em pixel art. O máximo, a perda por intervalo, o intervalo e a recuperação por cápsula são ajustáveis no Inspector.
 
 ### Cápsulas de Oxigênio
 Existem cápsulas espalhadas pelas fases.
 
 Ao coletar uma cápsula:
-- o jogador recupera 20 de oxigênio;
-- a cápsula desaparece;
+- o jogador recupera até 20 de oxigênio, limitado ao máximo;
+- a cápsula é consumida uma única vez;
 - um efeito sonoro é reproduzido.
 
 ## Cristais
-Existem 4 cristais coletáveis espalhados pelo jogo.
+Existem quatro cristais distintos. O amarelo está na Terra 2, o roxo em Marte 2, o azul na Lua 1 ou na Lua 3 e o verde na Lua 2. As duas instâncias azuis dão uma única unidade de progresso.
 
 Ao coletar um cristal:
 - o total global aumenta;
 - o cristal desaparece;
 - o HUD de cristais é atualizado.
 
-O progresso dos cristais é mantido durante a troca de cenas.
+O progresso é mantido ao avançar e ao reiniciar a fase pelo Pause. Um cristal já coletado desaparece ao recarregar a fase.
 
 ## Inimigo
 O jogo possui um inimigo básico de patrulha.
 
 Comportamento:
 - anda horizontalmente;
-- muda de direção ao detectar uma parede;
-- causa 15 de dano ao oxigênio ao encostar no jogador;
+- usa dois RayCast2D para detectar obstáculos e bordas. Inverte a direção quando o caminho oposto está livre e espera quando ambos os lados estão bloqueados;
+- causa 15 de dano ao oxigênio por entrada na área de contato, com proteção de 0,25 s contra impactos duplicados;
 - aplica knockback;
 - deixa o personagem vermelho brevemente ao receber dano.
 
@@ -106,12 +98,13 @@ O jogador perde quando:
 Ao perder, o jogo abre a tela de Game Over.
 
 ## Pausa
-Ao pressionar ESC, o jogo abre o menu de pausa.
+O autoload GlobalPause é compartilhado pelas nove fases. A pausa congela o jogo e os temporizadores da fase. O comando fica bloqueado enquanto o PixelFade troca de cena.
 
-Opções:
-- continuar;
-- reiniciar a fase;
-- voltar ao menu principal.
+- **Continuar** retoma a fase no mesmo ponto.
+- **Reiniciar** recarrega a fase e restaura o oxigênio, mantendo os cristais coletados.
+- **Menu** encerra a partida e zera os cristais.
+
+Iniciar pelo menu ou usar Retry após o Game Over começa com zero cristais. Retry volta à Terra 1.
 
 ## Tutorial
 Antes da primeira fase, o jogo apresenta instruções com fade in e fade out explicando:
@@ -203,14 +196,7 @@ Com 4 cristais:
 - a cena final é carregada.
 
 ## Encerramento
-A cena final utiliza tela preta e efeitos sonoros.
-
-A sequência inclui:
-- impacto sonoro;
-- som espacial;
-- mensagem “Obrigado por jogar!”;
-- retorno ao menu principal;
-- reset do progresso dos cristais.
+A tela final abre em preto com um impacto sonoro. Após 3 s, começa o áudio espacial. O texto “OBRIGADO POR JOGAR” aparece 8 s depois e permanece por 5 s. Aos 16 s, a partida é zerada e o menu principal volta. Os três tempos são ajustáveis no Inspector.
 
 
 ---
@@ -252,7 +238,7 @@ O jogador atravessa diferentes trechos dentro do mesmo planeta.
 
 ### Progressão geral
 O jogador viaja na ordem:
-Terra → Marte → Lua → Nave Final.
+Terra 1 → Terra 2 → Terra 3 → Marte 1 → Marte 2 → Marte 3 → Lua 1 → Lua 2 → Lua 3 → Nave Final. Os portais e foguetes usam PixelFade.
 
 Os 4 cristais funcionam como objetivo global da jornada.
 
@@ -298,10 +284,10 @@ Os 4 cristais funcionam como objetivo global da jornada.
 ## Fluxo Final
 ```text
 Menu
-→ Tutorial
-→ Terra
-→ Marte
-→ Lua
+→ Nave introdutória
+→ Terra 1 → Terra 2 → Terra 3
+→ Marte 1 → Marte 2 → Marte 3
+→ Lua 1 → Lua 2 → Lua 3
 → Nave Final
 → Encerramento
 → Menu
@@ -313,3 +299,7 @@ O escopo mudou em relação ao protótipo inicial. O projeto deixou de ser uma d
 O sistema de inventário/hotbar não faz parte da versão atual.
 A antiga ideia de Núcleo de Dados/portal foi substituída pelo objetivo de coletar 4 cristais e ativar a nave final.
 
+
+## Créditos
+
+O menu do jogo credita Matheus Portilho.
