@@ -10,7 +10,7 @@ Atravessar todas as fases, manter o oxigênio acima de zero, coletar os 4 crista
 ## Estrutura Atual
 O jogo possui:
 - menu principal;
-- tutorial inicial;
+- prólogo na nave e uma cena avulsa de tutorial;
 - Terra, Marte e Lua;
 - três trechos/fases em cada planeta;
 - sistema de oxigênio;
@@ -106,14 +106,8 @@ O autoload GlobalPause é compartilhado pelas nove fases. A pausa congela o jogo
 
 Iniciar pelo menu ou usar Retry após o Game Over começa com zero cristais. Retry volta à Terra 1.
 
-## Tutorial
-Antes da primeira fase, o jogo apresenta instruções com fade in e fade out explicando:
-- controles;
-- objetivo;
-- oxigênio;
-- perigos;
-- gravidade;
-- cristais.
+## Prólogo e tutorial
+A opção Iniciar abre o prólogo na nave. O alarme e o escurecimento levam à Terra 1. A cena `Cenas/tutorial.tscn` pode ser aberta separadamente no editor e apresenta controles, missão, oxigênio, perigos, gravidade e cristais antes de carregar a Terra 1.
 
 
 ---
@@ -294,7 +288,7 @@ Menu
 ```
 
 ## Observações de Projeto
-O escopo mudou em relação ao protótipo inicial. O projeto deixou de ser uma demonstração de uma única fase e passou a ter três planetas, múltiplas cenas, coleta global de cristais, inimigo, transições com foguetes, áudio, tutorial, pausa e encerramento completo.
+O escopo mudou em relação ao protótipo inicial. O projeto deixou de ser uma demonstração de uma única fase e passou a ter três planetas, múltiplas cenas, coleta global de cristais, inimigo, transições com foguetes, áudio, prólogo, pausa e encerramento completo.
 
 O sistema de inventário/hotbar não faz parte da versão atual.
 A antiga ideia de Núcleo de Dados/portal foi substituída pelo objetivo de coletar 4 cristais e ativar a nave final.
