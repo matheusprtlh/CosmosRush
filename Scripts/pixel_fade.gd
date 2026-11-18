@@ -39,7 +39,7 @@ func trocar_fase(caminho_da_fase: String) -> bool:
 	return erro == OK
 
 
-func _on_scene_changed(nova_cena: Node) -> void:
+func _on_scene_changed(_nova_cena: Node = null) -> void:
 	# Em trocas diretas, como reiniciar, apenas a revelação é necessária.
 	if trocando_fase:
 		return
@@ -47,7 +47,7 @@ func _on_scene_changed(nova_cena: Node) -> void:
 		revelacao_direta.kill()
 	_set_progress(2.0)
 
-	var caminho := nova_cena.scene_file_path
+	var caminho := get_tree().current_scene.scene_file_path
 	if caminho.begins_with("res://Cenas/terra_") or caminho.begins_with("res://Cenas/marte") or caminho.begins_with("res://Cenas/lua"):
 		_set_progress(1.0)
 		revelacao_direta = _animar_progress(1.0, 2.0, duracao_saida, tempo_preenchido)

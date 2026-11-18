@@ -398,18 +398,15 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1105876619]
+visible = false
 offset_left = -156.0
 offset_top = -10.0
 offset_right = -152.0
 offset_bottom = 17.0
 scale = Vector2(0.9132565, 0.9132565)
-offset_transform_enabled = true
-offset_transform_position = Vector2(0, 10900000000)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_e2nbm")
 value = 100.0
-indeterminate = true
-editor_preview_indeterminate = false
 metadata/_edit_use_anchors_ = true
 
 [node name="OxygenBar" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=840451484]

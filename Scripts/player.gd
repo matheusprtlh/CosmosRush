@@ -48,7 +48,6 @@ var knockback_restante: float = 0.0
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var barra_oxigenio: ProgressBar = $CanvasLayer/ProgressBar
 @onready var oxygen_bar: AnimatedSprite2D = $CanvasLayer/OxygenBar
-@onready var label_oxigenio: Label = $CanvasLayer/LabelOxigenio
 @onready var timer_oxigenio: Timer = $Timer
 @onready var cristais_hud: AnimatedSprite2D = $CanvasLayer/CristaisHUD
 
@@ -147,13 +146,6 @@ func atualizar_ui_oxigenio() -> void:
 	if barra_oxigenio:
 		barra_oxigenio.max_value = oxigenio_maximo
 		barra_oxigenio.value = oxigenio_atual
-
-	if label_oxigenio:
-		label_oxigenio.text = (
-			str(oxigenio_atual)
-			+ "/"
-			+ str(oxigenio_maximo)
-		)
 
 	if oxygen_bar:
 		var porcentagem := (

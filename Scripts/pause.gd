@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 
-func _on_scene_changed(_nova_cena: Node) -> void:
+func _on_scene_changed(_nova_cena: Node = null) -> void:
 	continuar_jogo()
 
 
